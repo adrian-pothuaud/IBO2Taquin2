@@ -111,4 +111,25 @@ public class Grid {
         grid.get(zer.getX()).get(zer.getY()).equals(newVal);
     }
 
+    public boolean SimilarTo(Grid other){
+        return (grid.get(0).get(0) == other.grid.get(0).get(0)
+                && SimilarToHelper(other, 0, 1));
+    }
+
+    private boolean SimilarToHelper(Grid other, int line, int column){
+        if(column<4){
+            return (grid.get(line).get(column) == other.grid.get(line).get(column)
+                    && SimilarToHelper(other, line, column + 1));
+        }
+        else{
+            if(line<4){
+                return (grid.get(line).get(column) == other.grid.get(line).get(column)
+                        && SimilarToHelper(other, line + 1, column));
+            }
+            else{
+                return true;
+            }
+        }
+    }
+
 }

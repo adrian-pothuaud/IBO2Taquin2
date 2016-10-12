@@ -9,7 +9,7 @@ public class Party {
     private static final Grid perfectGrid = new Grid();
 
     public static boolean checkWin(Grid grid){
-        return grid==perfectGrid;
+        return grid.SimilarTo(perfectGrid);
     }
 
     public static void clearCls(){
