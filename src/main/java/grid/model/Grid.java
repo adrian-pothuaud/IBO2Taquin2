@@ -42,12 +42,12 @@ public class Grid {
         //LOGGER.info("Grid created: \n" + this);
     }
 
-    public Grid(List<Integer> config){
+    public Grid(ArrayList<Integer> config1){
         //LOGGER.info("Grid instance under construction within given configuration...");
         for (int i=0; i<4; i++){
             grid.add(i, new ArrayList<Case>());
             for (int j=0; j<4; j++){
-                grid.get(i).add(new Case(config.get(4*i+j),i,j));
+                grid.get(i).add(new Case(config1.get(4*i+j),i,j));
             }
         }
         //LOGGER.info("Grid created: \n" + this);
