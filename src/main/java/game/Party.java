@@ -10,7 +10,7 @@ public class Party {
     public static ArrayList<Integer> config1;
     public static Grid perfect;
 
-    public boolean checkWin(Grid grid, Grid perfect){
+    public static boolean checkWin(Grid grid, Grid perfect){
         return grid.SimilarTo(perfect);
     }
 
@@ -52,23 +52,29 @@ public class Party {
         Grid g = new Grid();
         int key=1;
 
-        while(key>0){
-            System.out.println("Choisissez une case par sa valeur pour modifier la grille en jeu:");
-            System.out.println(g);
-            key = sc.nextInt();
-            //System.out.println(g.getCaseByKey(key));
-            //System.out.println("is in grid?: " + g.getCaseByKey(key).isInGrid());
-            //System.out.println("is movable?: " + g.getCaseByKey(key).isMovable(g));
-            if(g.getCaseByKey(key).isMovable(g)){
-                clearCls();
-                System.out.println("Configuration has changed...");
-				/*
-				 * TODO permutation from Grid
-				 */
-                g.move(g.getCaseByKey(key));
-            }else{
-                clearCls();
-                System.out.println("Case not movable, please choose another value");
+        while((key > 0) && !checkWin(g, perfect)){
+            if(!checkWin(g, perfect)) {
+                System.out.println("Choisissez une case par sa valeur pour modifier la grille en jeu:");
+                System.out.println(g);
+                key = sc.nextInt();
+                //System.out.println(g.getCaseByKey(key));
+                //System.out.println("is in grid?: " + g.getCaseByKey(key).isInGrid());
+                //System.out.println("is movable?: " + g.getCaseByKey(key).isMovable(g));
+                if (g.getCaseByKey(key).isMovable(g)) {
+                    clearCls();
+                    System.out.println("Configuration has changed...");
+                    /*
+                     * TODO permutation from Grid
+                     */
+                    g.move(g.getCaseByKey(key));
+                } else {
+                    clearCls();
+                    System.out.println("Case not movable, please choose another value");
+                }
+            }
+            else{
+                System.out.println("BRAVO! Vous avez gagné la partie!");
+                break;
             }
         }
 

@@ -7,7 +7,7 @@ import grid.model.Grid;
  */
 public class AI {
 
-    publis static Grid perfectGrid;
+    public static Grid perfectGrid;
 
     public void MoveCaseToPos(int caseValue, int line, int col){
 
