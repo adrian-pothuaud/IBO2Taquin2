@@ -1,10 +1,9 @@
 package ai;
 
-import grid.model.Case;
 import grid.model.Grid;
 import grid.model.Position;
 
-import java.util.ArrayList;
+import java.util.logging.Logger;
 
 /**
  * Created by adrianpothuaud on 17/11/2016.
@@ -21,20 +20,33 @@ import java.util.ArrayList;
 
 public class AI_1 {
 
+    private static final Logger LOGGER = Logger.getLogger(AI_1.class.getName());
+
     public boolean case_1(Grid g){
+
+        //loc tgt pos for case 1
         Position tgt = new Position(0,0);
+
         //Localiser la case 1
-        Position tmp1 = g.getCaseByKey(1).getPos();
+
         //Localiser la case 0
         Position tmp0 = g.getCaseByKey(0).getPos();
+
         //Ammener la case 0 en [0,0]
-        while(g.getCaseByKey(0).getPos()!=tgt){
-            //trouver les voisins de la case 0
-            ArrayList<Case> neighb = new ArrayList<Case>();
-            
-            //identifier le plus proche de la position souhaitée
-            //bouger le voisin identifié
+        while(!g.getCaseByKey(0).getPos().IsEqual(tgt)){
+            LOGGER.info("0 not in pos");
+            if(tmp0.getLeft().isInGrid()){
+                LOGGER.info("moving left");
+                g.move(g.getCaseByPos(tmp0.getLeft()));
+            }
+            tmp0 = g.getCaseByKey(0).getPos();
+            if(tmp0.getTop().isInGrid()){
+                LOGGER.info("moving top");
+                g.move(g.getCaseByPos(tmp0.getTop()));
+            }
+            tmp0 = g.getCaseByKey(0).getPos();
         }
+
         //Faire tourner le rectangle définit par les deux cases jusqu'à ce que la case 1 soit à sa place
 
         return true;

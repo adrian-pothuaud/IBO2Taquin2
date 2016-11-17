@@ -64,4 +64,13 @@ public class Position {
         y=other.getY();
     }
 
+    public boolean IsEqual(Position other){
+        return x==other.getX()&&y==other.getY();
+    }
+
+    public boolean isInGrid(){
+        //LOGGER.info("call to isInGrid method for Case " + this);
+        return ((x >= 0) && (x < 4) && (y >= 0) && (y < 4));
+    }
+
 }
