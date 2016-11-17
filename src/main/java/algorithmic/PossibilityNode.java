@@ -10,12 +10,9 @@ public class PossibilityNode {
     PossibilityNode zeroGoesBottom;
     PossibilityNode zeroGoesLeft;
 
-    public PossibilityNode() {
-        // TODO Auto-generated constructor stub
-    }
-
     public PossibilityNode(Grid g) {
-        // TODO Auto-generated constructor stub
+        // compute childs until perfect grid
+
     }
 
     public PossibilityNode getZeroGoesTopNode(){

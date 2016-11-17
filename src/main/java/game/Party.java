@@ -9,7 +9,6 @@ public class Party {
 
     public static ArrayList<Integer> config1;
     public static Grid perfect;
-
     public static boolean checkWin(Grid grid, Grid perfect){
         return grid.SimilarTo(perfect);
     }
@@ -23,8 +22,8 @@ public class Party {
     private static Scanner sc;
 
     public static void main(String[] args) {
-        config1 = new ArrayList<Integer>();
 
+        config1 = new ArrayList<Integer>();
         config1.add(1);
         config1.add(2);
         config1.add(3);
@@ -41,7 +40,6 @@ public class Party {
         config1.add(14);
         config1.add(15);
         config1.add(0);
-
         perfect = new Grid(config1);
 
         System.out.println("Reminder: perfect configuration is as follow:");
@@ -52,7 +50,7 @@ public class Party {
         Grid g = new Grid();
         int key=1;
 
-        while((key > 0) && !checkWin(g, perfect)){
+        while(!checkWin(g, perfect)){
             if(!checkWin(g, perfect)) {
                 System.out.println("Choisissez une case par sa valeur pour modifier la grille en jeu:");
                 System.out.println(g);
@@ -60,12 +58,13 @@ public class Party {
                 //System.out.println(g.getCaseByKey(key));
                 //System.out.println("is in grid?: " + g.getCaseByKey(key).isInGrid());
                 //System.out.println("is movable?: " + g.getCaseByKey(key).isMovable(g));
+                while(key<=0){
+                    System.out.println("MAUVAISE SAISIE recommencer...");
+                    key = sc.nextInt();
+                }
                 if (g.getCaseByKey(key).isMovable(g)) {
                     clearCls();
                     System.out.println("Configuration has changed...");
-                    /*
-                     * TODO permutation from Grid
-                     */
                     g.move(g.getCaseByKey(key));
                 } else {
                     clearCls();
@@ -77,7 +76,6 @@ public class Party {
                 break;
             }
         }
-
     }
 
 }
