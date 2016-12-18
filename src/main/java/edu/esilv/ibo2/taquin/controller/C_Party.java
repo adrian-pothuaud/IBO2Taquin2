@@ -1,16 +1,33 @@
-package game;
+package edu.esilv.ibo2.taquin.controller;
 
-import grid.model.Grid;
+import edu.esilv.ibo2.taquin.model.M_Grid;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Party {
+public class C_Party {
 
-    public static ArrayList<Integer> config1;
-    public static Grid perfect;
-    public static boolean checkWin(Grid grid, Grid perfect){
-        return grid.SimilarTo(perfect);
+    public static ArrayList<Integer> perfConf = new ArrayList<Integer>() {{
+        add(1);
+        add(2);
+        add(3);
+        add(4);
+        add(5);
+        add(6);
+        add(7);
+        add(8);
+        add(9);
+        add(10);
+        add(11);
+        add(12);
+        add(13);
+        add(14);
+        add(15);
+        add(0);
+    }};
+    public static M_Grid perfect = new M_Grid(perfConf);
+    public static boolean checkWin(M_Grid grid, M_Grid perfect){
+        return grid.isSimilarTo(perfect);
     }
 
     public static void clearCls(){
@@ -23,36 +40,18 @@ public class Party {
 
     public static void main(String[] args) {
 
-        config1 = new ArrayList<Integer>();
-        config1.add(1);
-        config1.add(2);
-        config1.add(3);
-        config1.add(4);
-        config1.add(5);
-        config1.add(6);
-        config1.add(7);
-        config1.add(8);
-        config1.add(9);
-        config1.add(10);
-        config1.add(11);
-        config1.add(12);
-        config1.add(13);
-        config1.add(14);
-        config1.add(15);
-        config1.add(0);
-        perfect = new Grid(config1);
-
-        System.out.println("Reminder: perfect configuration is as follow:");
+        System.out.println("Reminder: goal is to reach perfect configuration as below");
 
         System.out.println(perfect);
 
         sc = new Scanner(System.in);
-        Grid g = new Grid();
+        M_Grid g = new M_Grid();
         int key=1;
 
         while(!checkWin(g, perfect)){
             if(!checkWin(g, perfect)) {
-                System.out.println("Choisissez une case par sa valeur pour modifier la grille en jeu:");
+                System.out.println("Modify current grid by moving a case");
+                System.out.println("Choose a case to move by key:");
                 System.out.println(g);
                 key = sc.nextInt();
                 //System.out.println(g.getCaseByKey(key));
@@ -65,10 +64,10 @@ public class Party {
                 if (g.getCaseByKey(key).isMovable(g)) {
                     clearCls();
                     System.out.println("Configuration has changed...");
-                    g.move(g.getCaseByKey(key));
+                    g.moveCase(g.getCaseByKey(key));
                 } else {
                     clearCls();
-                    System.out.println("Case not movable, please choose another value");
+                    System.out.println("M_Case not movable, please choose another value");
                 }
             }
             else{
