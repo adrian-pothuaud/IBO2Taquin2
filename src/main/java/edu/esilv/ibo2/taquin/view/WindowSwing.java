@@ -25,9 +25,6 @@ public class WindowSwing extends JFrame{
         setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         p.add(b);
-        p.add(t);
-        p.add(ta);
-
 
         add(p);
         setVisible(true);
