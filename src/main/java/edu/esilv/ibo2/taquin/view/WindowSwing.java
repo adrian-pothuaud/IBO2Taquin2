@@ -8,6 +8,10 @@ public class WindowSwing extends JFrame{
 
     JPanel p = new JPanel();
     JButton b= new JButton("GO");
+    //JTextField t =new JTextField("Hi");
+    //JTextArea ta = new JTextArea("How \n are \n you ? ",20, 5);
+
+
 
     public static void main(String[] args){
         new WindowSwing();
@@ -21,9 +25,11 @@ public class WindowSwing extends JFrame{
         setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         p.add(b);
+        p.add(t);
+        p.add(ta);
+
+
         add(p);
-
-
         setVisible(true);
     }
 
