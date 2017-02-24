@@ -7,14 +7,13 @@ import javax.swing.*;
 public class WindowSwing extends JFrame{
 
     JPanel p = new JPanel();
-    JButton b= new JButton("GO");
-    //JTextField t =new JTextField("Hi");
-    //JTextArea ta = new JTextArea("How \n are \n you ? ",20, 5);
-
-
 
     public static void main(String[] args){
         new WindowSwing();
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        JFrame frame = new JFrame("GridLayout Test");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
     // constructor
@@ -24,7 +23,6 @@ public class WindowSwing extends JFrame{
         setSize(400,300);
         setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        p.add(b);
 
         add(p);
         setVisible(true);
