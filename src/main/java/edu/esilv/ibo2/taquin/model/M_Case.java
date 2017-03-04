@@ -2,7 +2,21 @@ package edu.esilv.ibo2.taquin.model;
 
 import java.util.logging.Logger;
 
-
+/**
+ * A class that represents a <b>Case</b> in Puzzle Game's Grid.
+ * Case's attributes are:
+ *      -*- key (value in the case)
+ *      -*- pos (position in [x, y] format)
+ * Constructors:
+ *      -*- M_Case(key, x, y)
+ *      -*- M_Case(key, position)
+ *      -*- M_Case(otherCase) <i>Copy constructor</i>
+ * Methods:
+ *      -*- getKey()
+ *      -*- setKey(newKey)
+ *      -*- getPos()
+ *      -*-
+ */
 public class M_Case {
 
     private static final Logger LOGGER = Logger.getLogger(M_Case.class.getName());
@@ -44,6 +58,10 @@ public class M_Case {
     public void setPos(int a, int b){
         pos.setX(a);
         pos.setY(b);
+    }
+
+    public void setPos(M_Position newPos){
+        pos.equals(newPos);
     }
 
     public M_Case getTop(M_Grid g){

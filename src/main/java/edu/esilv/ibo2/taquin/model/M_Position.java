@@ -2,6 +2,17 @@ package edu.esilv.ibo2.taquin.model;
 
 import java.util.logging.Logger;
 
+/**
+ * A class that represents a Position in the Game's Grid in [row, column] format.
+ * Position's attributes are:
+ *      -*- x (line)
+ *      -*- y (column)
+ * Constructors:
+ *      -*- M_Position()
+ *      -*- M_Position(x, y)
+ * Methods:
+ *      -*-
+ */
 public class M_Position {
 
     private static final Logger LOGGER = Logger.getLogger(M_Case.class.getName());

@@ -2,6 +2,10 @@ package edu.esilv.ibo2.taquin.model;
 
 import java.util.ArrayList;
 
+/**
+ * A class used for Puzzle solving algorithms.
+ * Stores an initial configuration as root node and a list of childrens(inner class M_PossibNode).
+ */
 public class M_PossibTree{
 
     public static class M_PossibNode{
