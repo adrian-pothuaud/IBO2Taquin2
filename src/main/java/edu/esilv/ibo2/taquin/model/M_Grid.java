@@ -40,7 +40,7 @@ public class M_Grid {
                 grid.get(i).add(new M_Case(tmplist.get(4*i+j),i,j));
             }
         }
-        LOGGER.info("M_Grid created: \n" + this);
+        //LOGGER.info("M_Grid created: \n" + this);
     }
 
     // constructor with given list of integers

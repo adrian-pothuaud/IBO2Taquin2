@@ -45,36 +45,36 @@ public class C_Party {
         System.out.println(perfect);
 
         sc = new Scanner(System.in);
-        M_Grid g = new M_Grid();
+        // M_Grid g = new M_Grid(); uncomment for classic party
+        M_Grid g = new M_Grid(perfConf); // comment for party
+        g.moveCase(g.getCaseByKey(15));
+
         int key=1;
 
         while(!checkWin(g, perfect)){
-            if(!checkWin(g, perfect)) {
-                System.out.println("Modify current grid by moving a case");
-                System.out.println("Choose a case to move by key:");
-                System.out.println(g);
+            System.out.println("Modify current grid by moving a case");
+            System.out.println("Choose a case to move by key:");
+            System.out.println(g);
+            key = sc.nextInt();
+            //System.out.println(g.getCaseByKey(key));
+            //System.out.println("is in grid?: " + g.getCaseByKey(key).isInGrid());
+            //System.out.println("is movable?: " + g.getCaseByKey(key).isMovable(g));
+            while(key<=0){
+                System.out.println("MAUVAISE SAISIE recommencer...");
                 key = sc.nextInt();
-                //System.out.println(g.getCaseByKey(key));
-                //System.out.println("is in grid?: " + g.getCaseByKey(key).isInGrid());
-                //System.out.println("is movable?: " + g.getCaseByKey(key).isMovable(g));
-                while(key<=0){
-                    System.out.println("MAUVAISE SAISIE recommencer...");
-                    key = sc.nextInt();
-                }
-                if (g.getCaseByKey(key).isMovable(g)) {
-                    clearCls();
-                    System.out.println("Configuration has changed...");
-                    g.moveCase(g.getCaseByKey(key));
-                } else {
-                    clearCls();
-                    System.out.println("M_Case not movable, please choose another value");
-                }
             }
-            else{
-                System.out.println("BRAVO! Vous avez gagné la partie!");
-                break;
+            if (g.getCaseByKey(key).isMovable(g)) {
+                clearCls();
+                System.out.println("Configuration has changed...");
+                g.moveCase(g.getCaseByKey(key));
+            } else {
+                clearCls();
+                System.out.println("M_Case not movable, please choose another value");
             }
+
         }
+        System.out.println("BRAVO! Vous avez gagné la partie!");
+        System.out.println(g);
     }
 
 }
