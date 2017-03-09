@@ -3,29 +3,19 @@ package edu.esilv.ibo2.taquin.model;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.PriorityQueue;
-
-/**
- * Created by adrianpothuaud on 18/12/2016.
- */
 public class M_PossibTreeTest {
 
     private M_PossibTree myTree;
-    private M_Grid myGrid;
-    private PriorityQueue<M_PossibNode> myQueue;
 
     @Before
     public void setUp() throws Exception {
-        myQueue = new PriorityQueue<M_PossibNode>();
-        myGrid = new M_Grid();
+        // PriorityQueue<M_PossibNode> myQueue = new PriorityQueue<M_PossibNode>();
+        M_Grid myGrid = new M_Grid();
         myTree = new M_PossibTree(myGrid);
     }
 
     @Test
     public void basicTree() throws Exception {
-        /**
-         *
-         */
         M_Grid rootgrid = myTree.getRoot().getGrid();
         M_Position actualZeroPos = rootgrid.getCaseByKey(0).getPos();
         M_Position posToMove;
@@ -48,7 +38,5 @@ public class M_PossibTreeTest {
 
         M_Grid newGrid = new M_Grid(rootgrid);
         newGrid.moveCase(rootgrid.getCaseByPos(posToMove));
-
-
     }
 }

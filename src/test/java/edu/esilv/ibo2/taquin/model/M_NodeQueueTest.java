@@ -5,9 +5,6 @@ import org.junit.Test;
 
 import java.util.PriorityQueue;
 
-/**
- * Created by adrianpothuaud on 05/03/2017.
- */
 public class M_NodeQueueTest {
 
     private PriorityQueue<M_PossibNode> myQueue;
@@ -33,5 +30,4 @@ public class M_NodeQueueTest {
         assert myQueue.poll().equals(node1);
         assert myQueue.isEmpty();
     }
-
 }

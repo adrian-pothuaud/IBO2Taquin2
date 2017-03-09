@@ -1,7 +1,5 @@
 package edu.esilv.ibo2.taquin.model;
 
-import java.util.logging.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,13 +12,10 @@ import java.util.Random;
 
 public class M_Grid {
 
-    private static final Logger LOGGER = Logger.getLogger(M_Case.class.getName());
-
     private List<ArrayList<M_Case>> grid = new ArrayList<ArrayList<M_Case>>();
 
     // random constructor
     public M_Grid(){
-        //LOGGER.info("M_Grid instance under construction within Random generation...");
         List<Integer> tmplist = new ArrayList<Integer>();
         int cpt = 0;
         while(cpt<16){
@@ -40,24 +35,20 @@ public class M_Grid {
                 grid.get(i).add(new M_Case(tmplist.get(4*i+j),i,j));
             }
         }
-        //LOGGER.info("M_Grid created: \n" + this);
     }
 
     // constructor with given list of integers
     public M_Grid(ArrayList<Integer> config1){
-        //LOGGER.info("M_Grid instance under construction within given configuration...");
         for (int i=0; i<4; i++){
             grid.add(i, new ArrayList<M_Case>());
             for (int j=0; j<4; j++){
                 grid.get(i).add(new M_Case(config1.get(4*i+j),i,j));
             }
         }
-        //LOGGER.info("M_Grid created: \n" + this);
     }
 
     // copy constructor
     public M_Grid(M_Grid other){
-
         for(int l = 0; l < other.getGrid().size(); l++){
             grid.add(l, new ArrayList<M_Case>());
             for(int c = 0; c < other.getGrid().get(l).size(); c++){
@@ -67,7 +58,7 @@ public class M_Grid {
 
     }
 
-    public List<ArrayList<M_Case>> getGrid(){
+    private List<ArrayList<M_Case>> getGrid(){
         return grid;
     }
 
@@ -78,7 +69,7 @@ public class M_Grid {
         return this.getCaseByKey(k, l, 0);
     }
 
-    public M_Case getCaseByKey(int k, List<M_Case> l, int line){
+    private M_Case getCaseByKey(int k, List<M_Case> l, int line){
         for(M_Case c : l){
             if(c.getKey()==k){
                 return c;
@@ -90,8 +81,7 @@ public class M_Grid {
         return null;
     }
 
-    public M_Case getCaseByPos(M_Position k){
-        //LOGGER.info("getCaseByPos method...(M_Position: " + k + ")");
+    M_Case getCaseByPos(M_Position k){
         try{
             return grid.get(k.getX()).get(k.getY());
         }catch (IndexOutOfBoundsException e){
@@ -100,7 +90,6 @@ public class M_Grid {
     }
 
     public void moveCase(M_Case toMove){
-        //LOGGER.info("call to permute method for M_Case " + this.getCaseByKey(0) + " with other M_Case " + toMove);
         int key = toMove.getKey();
         M_Position val = toMove.getPos();
         M_Position zer = this.getCaseByKey(0).getPos();

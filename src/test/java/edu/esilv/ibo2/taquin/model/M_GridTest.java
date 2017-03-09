@@ -7,15 +7,10 @@ import java.util.ArrayList;
 
 import static junit.framework.TestCase.*;
 
-/**
- * Created by adrianpothuaud on 16/12/2016.
- */
 public class M_GridTest {
 
-    private M_Grid testGrid1, testGrid2, testGrid3, perfGrid;
-    private M_Case case1, case15, case0;
-    private M_Position pos1, pos2, pos3;
-    private ArrayList<Integer> config1, perfConfig;
+    private M_Grid testGrid1, testGrid2, perfGrid;
+    private M_Case case15, case0;
 
     @Before
     public void setUp() throws Exception {
@@ -30,7 +25,7 @@ public class M_GridTest {
          -------------------
          */
 
-        perfConfig = new ArrayList<Integer>();
+        ArrayList<Integer> perfConfig = new ArrayList<Integer>();
         perfConfig.add(1);
         perfConfig.add(2);
         perfConfig.add(3);
@@ -60,7 +55,7 @@ public class M_GridTest {
          -------------------
          */
 
-        config1 = new ArrayList<Integer>();
+        ArrayList<Integer> config1 = new ArrayList<Integer>();
         config1.add(2);
         config1.add(7);
         config1.add(10);
@@ -91,9 +86,6 @@ public class M_GridTest {
          */
 
         testGrid2 = new M_Grid(testGrid1);
-
-        testGrid3 = new M_Grid(); // random grid
-
     }
 
     @Test
@@ -181,9 +173,7 @@ public class M_GridTest {
 
     @Test
     public void testString() throws Exception {
-
-        assertTrue(testGrid2.toString() instanceof String);
-
+        assertTrue(testGrid2.toString() != null);
     }
 
 }
