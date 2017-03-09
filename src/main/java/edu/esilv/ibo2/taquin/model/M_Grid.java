@@ -16,7 +16,7 @@ public class M_Grid {
 
     private static final Logger LOGGER = Logger.getLogger(M_Case.class.getName());
 
-    List<ArrayList<M_Case>> grid = new ArrayList<ArrayList<M_Case>>();
+    private List<ArrayList<M_Case>> grid = new ArrayList<ArrayList<M_Case>>();
 
     // random constructor
     public M_Grid(){
@@ -68,9 +68,7 @@ public class M_Grid {
     }
 
     public List<ArrayList<M_Case>> getGrid(){
-
         return grid;
-
     }
 
     public M_Case getCaseByKey(int k){

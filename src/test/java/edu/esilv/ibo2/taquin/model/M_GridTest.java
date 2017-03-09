@@ -115,6 +115,7 @@ public class M_GridTest {
         case15 = new M_Case(15, testGrid1.getCaseByKey(15).getPos());
         assertTrue(case15.isEqual(testGrid1.getCaseByKey(15)));
 
+        assertNull(testGrid1.getCaseByKey(25));
     }
 
     @Test
@@ -140,10 +141,8 @@ public class M_GridTest {
 
     @Test
     public void isSimilarTo() throws Exception {
-
         assertTrue(testGrid2.isSimilarTo(testGrid1));
         assertFalse(testGrid2.isSimilarTo(perfGrid));
-
     }
 
     @Test

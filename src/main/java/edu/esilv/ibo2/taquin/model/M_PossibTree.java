@@ -16,11 +16,6 @@ public class M_PossibTree{
         perfConfLimiter = 5;
     }
 
-    public M_PossibTree(M_Grid r, int pcl){
-        root = new M_PossibNode(r);
-        perfConfLimiter = pcl;
-    }
-
     public M_PossibNode getRoot() {
         return root;
     }

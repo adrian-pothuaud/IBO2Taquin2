@@ -49,6 +49,6 @@ public class M_PossibTreeTest {
         M_Grid newGrid = new M_Grid(rootgrid);
         newGrid.moveCase(rootgrid.getCaseByPos(posToMove));
 
-        
+
     }
 }

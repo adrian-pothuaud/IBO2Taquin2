@@ -59,7 +59,8 @@ public class M_CaseTest {
         case11 = new M_Case(11, pos11);
         case11.setPos(2, 2);
         M_Position pos12 = new M_Position(2, 3);
-        case12 = new M_Case(12, pos12);
+        case12 = new M_Case(12, new M_Position());
+        case12.setPos(pos12);
         case13 = new M_Case(13, 3, 0);
         case14 = new M_Case(14, 3, 1);
         case15 = new M_Case(15, 3, 2);
