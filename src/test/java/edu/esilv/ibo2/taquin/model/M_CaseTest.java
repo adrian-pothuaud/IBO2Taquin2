@@ -161,4 +161,19 @@ public class M_CaseTest {
         assertTrue(case1.toString().contains(String.valueOf(case1.getKey())));
         assertTrue(case1.toString().contains(case1.getPos().toString()));
     }
+
+    @Test
+    public void setKey() throws Exception {
+        M_Case testCase = new M_Case(12, 1, 3);
+        testCase.setKey(4);
+        assert testCase.getKey() == 4;
+    }
+
+    @Test
+    public void setPos() throws Exception {
+        M_Case testCase = new M_Case(12, 1, 3);
+        testCase.setPos(3, 1);
+        assert testCase.getPos().getX() == 3;
+        assert testCase.getPos().getY() == 1;
+    }
 }
