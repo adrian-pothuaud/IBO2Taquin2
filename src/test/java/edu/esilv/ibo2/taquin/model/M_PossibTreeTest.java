@@ -2,6 +2,7 @@ package edu.esilv.ibo2.taquin.model;
 
 import org.junit.Test;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class M_PossibTreeTest {
@@ -120,5 +121,38 @@ public class M_PossibTreeTest {
         }
 
         assert myTree.getRoot().getNbChilds() == 4;
+    }
+
+    @Test
+    public void conditionalInvokingSwitches() throws Exception {
+
+        M_PossibTree myTree = new M_PossibTree(new M_Grid());
+
+        assert myTree.getRoot().getNbChilds() == 0;
+
+        ArrayList<String> directions = new ArrayList<String>() {{
+            add("getLeft");
+            add("getTop");
+            add("getRight");
+            add("getBottom");
+        }};
+
+        for (String direction : directions) {
+            Method  getDir = Class.forName("edu.esilv.ibo2.taquin.model.M_Position").getDeclaredMethod(direction);
+            M_Position pos = (M_Position) getDir.invoke(myTree.getRoot().getGrid().getCaseByKey(0).getPos());
+            if (pos.isInGrid()) {
+                M_Grid newGrid = new M_Grid(myTree.getRoot().getGrid());
+                newGrid.moveCase(newGrid.getCaseByPos(pos));
+                myTree.getRoot().addChild(newGrid);
+            }
+        }
+
+        assert myTree.getRoot().getNbChilds() >= 2;
+    }
+
+    @Test
+    public void buildChilds() throws Exception {
+        M_PossibTree myTree = new M_PossibTree(new M_Grid());
+        assert myTree.buildChilds(myTree.getRoot()) >= 2;
     }
 }
