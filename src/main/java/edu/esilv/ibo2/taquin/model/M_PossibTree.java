@@ -16,7 +16,7 @@ public class M_PossibTree{
         root = new M_PossibNode(r);
     }
 
-    M_PossibNode getRoot() {
+    public M_PossibNode getRoot() {
         return root;
     }
 

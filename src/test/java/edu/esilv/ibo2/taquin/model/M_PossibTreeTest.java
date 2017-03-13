@@ -189,27 +189,13 @@ public class M_PossibTreeTest {
     public void printLeafs() throws Exception {
         M_PossibTree myTree = new M_PossibTree(new M_Grid());
 
-        ArrayList<String> directions = new ArrayList<String>() {{
-            add("getLeft");
-            add("getTop");
-            add("getRight");
-            add("getBottom");
-        }};
+        System.out.println("ROOT");
+        System.out.println(myTree.getRoot().getGrid());
 
         // Build of root childs
         myTree.buildChilds(myTree.getRoot());
 
-        // Build childs of root childs
-        for (M_PossibNode node : myTree.getRoot().childrens) {
-            myTree.buildChilds(node);
-        }
-
-        // Build 3rd level childs
-        for (M_PossibNode node : myTree.getRoot().childrens) {
-            for (M_PossibNode child : node.childrens) {
-                myTree.buildChilds(child);
-            }
-        }
+        System.out.println("CHILDS");
 
         myTree.printLeafs(myTree.getRoot());
     }

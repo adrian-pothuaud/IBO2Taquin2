@@ -35,4 +35,8 @@ public class M_PossibNode {
     public boolean gridEquals(M_Grid g1) {
         return data.equals(g1);
     }
+
+    public ArrayList<M_PossibNode> getChildrens() {
+        return childrens;
+    }
 }
