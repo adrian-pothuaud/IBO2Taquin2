@@ -7,7 +7,7 @@ public class M_PossibNode {
     M_Grid data;
     ArrayList<M_PossibNode> childrens;
 
-    M_PossibNode(M_Grid g){
+    public M_PossibNode(M_Grid g){
         childrens = new ArrayList<M_PossibNode>();
         data = g;
     }
