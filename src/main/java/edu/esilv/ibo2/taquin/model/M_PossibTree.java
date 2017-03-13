@@ -8,11 +8,11 @@ import java.util.ArrayList;
  * A class used for Puzzle solving algorithms.
  * Stores an initial configuration as root node and a list of childrens(inner class M_PossibNode).
  */
-class M_PossibTree{
+public class M_PossibTree{
 
     private M_PossibNode root;
 
-    M_PossibTree(M_Grid r) {
+    public M_PossibTree(M_Grid r) {
         root = new M_PossibNode(r);
     }
 
@@ -20,7 +20,7 @@ class M_PossibTree{
         return root;
     }
 
-    int buildChilds(M_PossibNode leaf) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public int buildChilds(M_PossibNode leaf) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
 
         int cpt = 0;
 
@@ -43,5 +43,29 @@ class M_PossibTree{
         }
 
         return cpt;
+    }
+
+    public void printTree(M_PossibNode node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.getGrid());
+        for(M_PossibNode child : node.childrens) {
+            printTree(child);
+        }
+    }
+
+    public void printLeafs(M_PossibNode node) {
+        if (!node.haveChild()) {
+            System.out.println(node.getGrid());
+            return;
+        }
+        for (M_PossibNode child : node.childrens) {
+            printLeafs(child);
+        }
+    }
+
+    public void readAndExec(String parentClass, String method, ArrayList args) {
+
     }
 }

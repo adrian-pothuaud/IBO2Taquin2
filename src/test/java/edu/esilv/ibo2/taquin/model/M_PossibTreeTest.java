@@ -155,4 +155,63 @@ public class M_PossibTreeTest {
         M_PossibTree myTree = new M_PossibTree(new M_Grid());
         assert myTree.buildChilds(myTree.getRoot()) >= 2;
     }
+
+    @Test
+    public void printTree() throws Exception {
+        M_PossibTree myTree = new M_PossibTree(new M_Grid());
+
+        ArrayList<String> directions = new ArrayList<String>() {{
+            add("getLeft");
+            add("getTop");
+            add("getRight");
+            add("getBottom");
+        }};
+
+        // Build of root childs
+        myTree.buildChilds(myTree.getRoot());
+
+        // Build childs of root childs
+        for (M_PossibNode node : myTree.getRoot().childrens) {
+            myTree.buildChilds(node);
+        }
+
+        // Build 3rd level childs
+        for (M_PossibNode node : myTree.getRoot().childrens) {
+            for (M_PossibNode child : node.childrens) {
+                myTree.buildChilds(child);
+            }
+        }
+
+        myTree.printTree(myTree.getRoot());
+    }
+
+    @Test
+    public void printLeafs() throws Exception {
+        M_PossibTree myTree = new M_PossibTree(new M_Grid());
+
+        ArrayList<String> directions = new ArrayList<String>() {{
+            add("getLeft");
+            add("getTop");
+            add("getRight");
+            add("getBottom");
+        }};
+
+        // Build of root childs
+        myTree.buildChilds(myTree.getRoot());
+
+        // Build childs of root childs
+        for (M_PossibNode node : myTree.getRoot().childrens) {
+            myTree.buildChilds(node);
+        }
+
+        // Build 3rd level childs
+        for (M_PossibNode node : myTree.getRoot().childrens) {
+            for (M_PossibNode child : node.childrens) {
+                myTree.buildChilds(child);
+            }
+        }
+
+        myTree.printLeafs(myTree.getRoot());
+    }
+
 }
