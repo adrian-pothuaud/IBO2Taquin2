@@ -36,7 +36,7 @@ public class M_Case {
         pos = case1.getPos();
     }
 
-    int getKey(){
+    public int getKey(){
         return key;
     }
 
@@ -44,7 +44,7 @@ public class M_Case {
         key=x;
     }
 
-    M_Position getPos(){
+    public M_Position getPos(){
         return pos;
     }
 

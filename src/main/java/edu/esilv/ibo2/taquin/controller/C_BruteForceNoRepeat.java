@@ -15,10 +15,9 @@ public class C_BruteForceNoRepeat {
 
     public void C_BruteForceNoRepeat() {
         System.out.println("Building Tree for BrutoForceNoRepeat solver");
-        myTree = new M_PossibTree(new M_Grid());
-        while (myTree.getRoot().gridEquals(perfect)) {
-            myTree.getRoot() = new M_PossibNode(new M_Grid());
-        }
+        M_Grid g = new M_Grid();
+        while (g.isSimilarTo(perfect)) g = new M_Grid();
+        myTree = new M_PossibTree(g);
     }
 
     public void build() {

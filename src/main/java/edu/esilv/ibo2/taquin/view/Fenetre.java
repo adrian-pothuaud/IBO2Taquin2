@@ -4,6 +4,8 @@ package edu.esilv.ibo2.taquin.view;
  * Created by guillaumelesieur on 23/02/2017.
  */
 
+import edu.esilv.ibo2.taquin.model.M_Grid;
+
 import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;

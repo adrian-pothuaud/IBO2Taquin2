@@ -140,4 +140,7 @@ public class M_Grid {
         return tmp;
     }
 
+    public Object getCases() {
+        return grid;
+    }
 }
