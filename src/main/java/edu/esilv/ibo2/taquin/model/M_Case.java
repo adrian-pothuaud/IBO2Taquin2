@@ -117,6 +117,22 @@ public class M_Case {
                 (this.getLeft(g)!=null && this.getLeft(g).getKey()==0));
     }
 
+    public String whereIsZero(M_Grid g){ // on considère que la grid est movable
+        if (this.getTop(g)!=null && this.getTop(g).getKey()==0){
+            return "top";
+        }
+        else if (this.getRight(g)!=null && this.getRight(g).getKey()==0){
+            return "right";
+        }
+        else if (this.getBottom(g)!=null && this.getBottom(g).getKey()==0){
+            return "bottom";
+        }
+        else if (this.getLeft(g)!=null && this.getLeft(g).getKey()==0){
+            return "left";
+        }
+        else return "error";
+    }
+
     public String toString(){
         return "CASE: key("+String.valueOf(key)+") " + pos.toString();
     }

@@ -46,6 +46,30 @@ public class FenetreAttacheeAGrid extends JFrame {
                         System.out.println("Case is movable ? : " + String.valueOf(curCase.isMovable(g)));
                         System.out.println("");
                         // Si case movable change the grid and update graphics ...
+                        if (curCase.isMovable(g)==true){ // If is movable
+                            //M_Case case = new M_Case(curCase.getKey(),curCase.getPos().getX() + 1,curCase.getPos().getY() + 1);
+                            if (curCase.whereIsZero(g)=="top") {
+                                System.out.println("Position case 0 : ");
+                                System.out.println("Ligne : " + String.valueOf(curCase.getPos().getX()));
+                                System.out.println("Colonne : " + String.valueOf(curCase.getPos().getY() + 1));
+                                System.out.println("");
+
+                                int i = curCase.getPos().getX();
+                                int j = curCase.getPos().getY() + 1;
+                            }
+                            else if (curCase.whereIsZero(g)=="bottom"){
+
+                            }
+                            else if (curCase.whereIsZero(g)=="right"){
+
+                            }
+                            else if (curCase.whereIsZero(g)=="left"){
+
+                            }
+                            else {
+                                System.out.println("error with whereIsZero() function");
+                            }
+                        }
                     }
                 });
             }
