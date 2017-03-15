@@ -55,7 +55,6 @@ public class FenetreAttacheeAGrid extends JFrame {
 
                                 int i = curCase.getPos().getX();
                                 int j = curCase.getPos().getY() + 1;
-                                g.fireTableDataChanged();
                             }
                             else if (curCase.whereIsZero(g)=="bottom"){
 

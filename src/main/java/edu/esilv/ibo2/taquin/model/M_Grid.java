@@ -165,7 +165,7 @@ public class M_Grid {
 
 
     public void Refresh(M_Grid grid){
-        //grid.fireTableDataChanged();
+        //grid.remove(0);
     }
 
 
