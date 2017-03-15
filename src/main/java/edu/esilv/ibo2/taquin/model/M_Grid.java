@@ -162,4 +162,12 @@ public class M_Grid {
        }
         else System.out.println("error with public void Swap");
     }
+
+
+    public void Refresh(M_Grid grid){
+        //grid.fireTableDataChanged();
+    }
+
+
+
 }

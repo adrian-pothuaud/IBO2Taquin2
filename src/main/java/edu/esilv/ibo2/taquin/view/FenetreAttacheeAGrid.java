@@ -47,7 +47,6 @@ public class FenetreAttacheeAGrid extends JFrame {
                         System.out.println("");
                         // Si case movable change the grid and update graphics ...
                         if (curCase.isMovable(g)==true){ // If is movable
-                            //M_Case case = new M_Case(curCase.getKey(),curCase.getPos().getX() + 1,curCase.getPos().getY() + 1);
                             if (curCase.whereIsZero(g)=="top") {
                                 System.out.println("Position case 0 : ");
                                 System.out.println("Ligne : " + String.valueOf(curCase.getPos().getX()));
@@ -56,6 +55,7 @@ public class FenetreAttacheeAGrid extends JFrame {
 
                                 int i = curCase.getPos().getX();
                                 int j = curCase.getPos().getY() + 1;
+                                g.fireTableDataChanged();
                             }
                             else if (curCase.whereIsZero(g)=="bottom"){
 
