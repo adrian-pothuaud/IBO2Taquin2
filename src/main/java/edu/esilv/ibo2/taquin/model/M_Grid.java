@@ -143,4 +143,23 @@ public class M_Grid {
     public Object getCases() {
         return grid;
     }
+
+
+
+    public void Swap(M_Case curCase, M_Case caseZero){ // Effectue le swap la case sélectionné et 0
+       if (curCase.getKey()!=0 && caseZero.getKey()==0){
+
+           M_Position posCase = curCase.getPos();
+           M_Position posZero = caseZero.getPos();
+
+           int a = posCase.getX();
+           int b = posCase.getY();
+           int x = posZero.getX();
+           int y = posZero.getY();
+
+           curCase.setPos(x,y);
+           caseZero.setPos(x,y);
+       }
+        else System.out.println("error with public void Swap");
+    }
 }
