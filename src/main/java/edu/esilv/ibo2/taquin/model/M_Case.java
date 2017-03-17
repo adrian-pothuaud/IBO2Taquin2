@@ -20,7 +20,7 @@ public class M_Case {
     private int key;
     private M_Position pos;
 
-    M_Case(int k, int a, int b) {
+    public M_Case(int k, int a, int b) {
         key = k;
         pos = new M_Position(a, b);
     }
@@ -116,6 +116,7 @@ public class M_Case {
                 (this.getBottom(g)!=null && this.getBottom(g).getKey()==0) ||
                 (this.getLeft(g)!=null && this.getLeft(g).getKey()==0));
     }
+/*
 
     public String whereIsZero(M_Grid g){ // on considère que la grid est movable
         if (this.getTop(g)!=null && this.getTop(g).getKey()==0){
@@ -132,6 +133,7 @@ public class M_Case {
         }
         else return "error";
     }
+*/
 
     public String toString(){
         return "CASE: key("+String.valueOf(key)+") " + pos.toString();

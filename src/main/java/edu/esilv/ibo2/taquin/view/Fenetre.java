@@ -24,7 +24,6 @@ public class Fenetre extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         //On définit le layout à utiliser sur le content pane
-        //Trois lignes sur deux colonnes
         this.setLayout(new GridLayout(4, 4));
         //On ajoute le bouton au content pane de la JFrame
 

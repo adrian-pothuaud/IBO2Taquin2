@@ -2,6 +2,7 @@ package edu.esilv.ibo2.taquin.view;
 
 import edu.esilv.ibo2.taquin.model.M_Case;
 import edu.esilv.ibo2.taquin.model.M_Grid;
+import edu.esilv.ibo2.taquin.model.M_Position;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,9 +35,10 @@ public class FenetreAttacheeAGrid extends JFrame {
         List<ArrayList<M_Case>> cases = (List<ArrayList<M_Case>>) g.getCases();
         for (ArrayList<M_Case> row : cases) {
             for (final M_Case curCase : row) {
-                JButton newBtn = new JButton(String.valueOf(curCase.getKey()));
+                final JButton newBtn = new JButton(String.valueOf(curCase.getKey()));
                 // on ajoute le btn à la grille graphique
                 this.getContentPane().add(newBtn);
+
                 // on click listener on affiche la case
                 newBtn.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -46,31 +48,24 @@ public class FenetreAttacheeAGrid extends JFrame {
                         System.out.println("Case is movable ? : " + String.valueOf(curCase.isMovable(g)));
                         System.out.println("");
                         // Si case movable change the grid and update graphics ...
-                        if (curCase.isMovable(g)==true){ // If is movable
-                            if (curCase.whereIsZero(g)=="top") {
-                                System.out.println("Position case 0 : ");
-                                System.out.println("Ligne : " + String.valueOf(curCase.getPos().getX()));
-                                System.out.println("Colonne : " + String.valueOf(curCase.getPos().getY() + 1));
-                                System.out.println("");
+                        if (curCase.isMovable(g) == true) { // If is movable
+                            System.out.println("Grid before move case \n " + g);
+                            System.out.println("--------");
 
-                                int i = curCase.getPos().getX();
-                                int j = curCase.getPos().getY() + 1;
-                            }
-                            else if (curCase.whereIsZero(g)=="bottom"){
+                            g.moveCase(curCase);
 
-                            }
-                            else if (curCase.whereIsZero(g)=="right"){
+                            System.out.println("Grid after move case \n " + g);
+                            System.out.println("--------");
 
-                            }
-                            else if (curCase.whereIsZero(g)=="left"){
+                            new FenetreAttacheeAGrid(g);
 
-                            }
-                            else {
-                                System.out.println("error with whereIsZero() function");
-                            }
                         }
                     }
+
+
                 });
+
+
             }
         }
 
