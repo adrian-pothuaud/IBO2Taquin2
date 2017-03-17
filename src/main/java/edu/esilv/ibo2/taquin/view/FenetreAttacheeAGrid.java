@@ -24,7 +24,7 @@ public class FenetreAttacheeAGrid extends JFrame {
 
     public FenetreAttacheeAGrid(final M_Grid g){
         this.setTitle("Projet Taquin");
-        this.setSize(300, 300);
+        this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
@@ -58,6 +58,8 @@ public class FenetreAttacheeAGrid extends JFrame {
                             System.out.println("--------");
 
                             new FenetreAttacheeAGrid(g);
+                            //this.setLayout(new GridLayout(4, 4));
+
 
                         }
                     }
