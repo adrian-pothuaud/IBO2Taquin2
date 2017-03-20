@@ -40,16 +40,28 @@ public class N_Opt_TreeGenerator {
         return nbPerfectConf;
     }
 
-    public void letOnlyBestGrids(ArrayList<Node> childs) {
-        int highestFactor = getHighestFactor(childs);
-
+    public void letOnlyBestGrids(Node parent) {
+        int highestFactor = getHighestFactor(parent.getChildrens());
+        ArrayList<Node> childsToRemove = new ArrayList<Node>();
+        for (Node child : parent.getChildrens()) {
+            if (child.getGrid().computeNOptFactor() < highestFactor) {
+                childsToRemove.add(child);
+            }
+        }
+        for (Node childToRemove : childsToRemove) {
+            parent.getChildrens().remove(childToRemove);
+        }
     }
 
     private int getHighestFactor(ArrayList<Node> childs) {
         int factor = 0;
         for (Node child : childs){
-
+            int childFactor = child.getGrid().computeNOptFactor();
+            if (childFactor > factor) {
+                factor = childFactor;
+            }
         }
+        return factor;
     }
 
     public void buildChildLvlTillPerfect() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
