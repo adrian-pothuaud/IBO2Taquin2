@@ -59,7 +59,6 @@ public class M_Grid {
                 grid.get(l).add(new M_Case(other.getGrid().get(l).get(c)));
             }
         }
-
     }
 
     private List<ArrayList<M_Case>> getGrid(){
