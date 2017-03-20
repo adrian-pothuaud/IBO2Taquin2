@@ -1,20 +1,20 @@
 package edu.esilv.ibo2.taquin.controller;
 
 import com.oracle.tools.packager.Log;
-import edu.esilv.ibo2.taquin.model.M_Grid;
-import edu.esilv.ibo2.taquin.model.M_Position;
+import edu.esilv.ibo2.taquin.model.Grid;
+import edu.esilv.ibo2.taquin.model.Position;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Random;
 
-class C_Solvable {
+class SolvableGrid {
 
-    private M_Grid g = new M_Grid(C_Party.perfect);
+    private Grid g = new Grid(Party.perfect);
     private ArrayList<Integer> lastMoves = new ArrayList<Integer>();
 
-    C_Solvable() {
-        g = new M_Grid(C_Party.perfect); // perfect grid
+    SolvableGrid() {
+        g = new Grid(Party.perfect); // perfect grid
     }
 
     private String getRandomDirection() {
@@ -35,7 +35,7 @@ class C_Solvable {
         Log.info("test");
         int rdm = new Random().nextInt() % 4;
         Log.info("Random int : " + String.valueOf(rdm));
-        M_Position pos = null;
+        Position pos = null;
         switch (rdm) {
             case 0:
                 pos = g.getCaseByKey(0).getPos().getTop();
@@ -57,7 +57,7 @@ class C_Solvable {
         }
     }
 
-    M_Grid genSolvablegrid(int iterations) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    Grid genSolvablegrid(int iterations) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         for (int i = 0; i < iterations; i++) {
             randomMoveZero();
         }

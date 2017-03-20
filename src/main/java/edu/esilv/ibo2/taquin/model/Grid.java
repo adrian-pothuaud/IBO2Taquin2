@@ -5,21 +5,21 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * A grid is a frame composed by several Cases and their M_Position
+ * A grid is a frame composed by several Cases and their Position
  * @author adrianpothuaud
  *
  */
 
-public class M_Grid {
+public class Grid {
 
-    private List<ArrayList<M_Case>> grid = new ArrayList<ArrayList<M_Case>>();
+    private List<ArrayList<Case>> grid = new ArrayList<ArrayList<Case>>();
 /*
-    public M_Grid(M_Case c){
+    public Grid(Case c){
         grid.get(0);
     }*/
 
     // random constructor
-    public M_Grid(){
+    public Grid(){
         List<Integer> tmplist = new ArrayList<Integer>();
         int cpt = 0;
         while(cpt<16){
@@ -34,46 +34,46 @@ public class M_Grid {
             }
         }
         for (int i=0; i<4; i++){
-            grid.add(i, new ArrayList<M_Case>());
+            grid.add(i, new ArrayList<Case>());
             for (int j=0; j<4; j++){
-                grid.get(i).add(new M_Case(tmplist.get(4*i+j),i,j));
+                grid.get(i).add(new Case(tmplist.get(4*i+j),i,j));
             }
         }
     }
 
     // constructor with given list of integers
-    public M_Grid(ArrayList<Integer> config1){
+    public Grid(ArrayList<Integer> config1){
         for (int i=0; i<4; i++){
-            grid.add(i, new ArrayList<M_Case>());
+            grid.add(i, new ArrayList<Case>());
             for (int j=0; j<4; j++){
-                grid.get(i).add(new M_Case(config1.get(4*i+j),i,j));
+                grid.get(i).add(new Case(config1.get(4*i+j),i,j));
             }
         }
     }
 
     // copy constructor
-    public M_Grid(M_Grid other){
+    public Grid(Grid other){
         for(int l = 0; l < other.getGrid().size(); l++){
-            grid.add(l, new ArrayList<M_Case>());
+            grid.add(l, new ArrayList<Case>());
             for(int c = 0; c < other.getGrid().get(l).size(); c++){
-                grid.get(l).add(new M_Case(other.getGrid().get(l).get(c)));
+                grid.get(l).add(new Case(other.getGrid().get(l).get(c)));
             }
         }
     }
 
-    private List<ArrayList<M_Case>> getGrid(){
+    private List<ArrayList<Case>> getGrid(){
         return grid;
     }
 
-    public M_Case getCaseByKey(int k){
+    public Case getCaseByKey(int k){
         //LOGGER.info("getCaseByKey method...(Key: " + k + ")");
         if(k<0 || k>15) return null;
-        List<M_Case> l = grid.get(0);
+        List<Case> l = grid.get(0);
         return this.getCaseByKey(k, l, 0);
     }
 
-    private M_Case getCaseByKey(int k, List<M_Case> l, int line){
-        for(M_Case c : l){
+    private Case getCaseByKey(int k, List<Case> l, int line){
+        for(Case c : l){
             if(c.getKey()==k){
                 return c;
             }
@@ -84,7 +84,7 @@ public class M_Grid {
         return null;
     }
 
-    public M_Case getCaseByPos(M_Position k){
+    public Case getCaseByPos(Position k){
         try{
             return grid.get(k.getX()).get(k.getY());
         }catch (IndexOutOfBoundsException e){
@@ -92,12 +92,12 @@ public class M_Grid {
         }
     }
 
-    public void moveCase(M_Case toMove){
+    public void moveCase(Case toMove){
         int key = toMove.getKey();
-        M_Position val = toMove.getPos();
-        M_Position zer = this.getCaseByKey(0).getPos();
-        M_Case newZer = new M_Case(0, val);
-        M_Case newVal = new M_Case(key, zer);
+        Position val = toMove.getPos();
+        Position zer = this.getCaseByKey(0).getPos();
+        Case newZer = new Case(0, val);
+        Case newVal = new Case(key, zer);
 		/*
 		 * Change value case pos to zero case pos
 		 */
@@ -108,7 +108,7 @@ public class M_Grid {
         grid.get(zer.getX()).get(zer.getY()).equals(newVal);
     }
 
-    public boolean isSimilarTo(M_Grid other){
+    public boolean isSimilarTo(Grid other){
         // verify size
         int l1 = this.getGrid().size(), l2 = other.getGrid().size();
         if(l1 == l2){
@@ -129,8 +129,8 @@ public class M_Grid {
 
     public String toString(){
         String tmp = "";
-        for (List<M_Case> i : grid){
-            for(M_Case j : i){
+        for (List<Case> i : grid){
+            for(Case j : i){
                 tmp+="|| ";
                 if(j.getKey()/10==0){
                     tmp += " ";
@@ -149,8 +149,8 @@ public class M_Grid {
 
     public int computeNOptFactor() {
         int factor = 0;
-        for (ArrayList<M_Case> row : grid) {
-            for (M_Case c : row) {
+        for (ArrayList<Case> row : grid) {
+            for (Case c : row) {
                 if(c.getKey() == ((4 * c.getPos().getX()) + c.getPos().getY() + 1)) {
                     factor++;
                 }

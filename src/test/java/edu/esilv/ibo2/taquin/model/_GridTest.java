@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 import static junit.framework.TestCase.*;
 
-public class M_GridTest {
+public class _GridTest {
 
-    private M_Grid testGrid1, testGrid2, perfGrid;
-    private M_Case case15, case0;
+    private Grid testGrid1, testGrid2, perfGrid;
+    private Case case15, case0;
 
     @Before
     public void setUp() throws Exception {
@@ -42,7 +42,7 @@ public class M_GridTest {
         perfConfig.add(14);
         perfConfig.add(15);
         perfConfig.add(0);
-        perfGrid = new M_Grid(perfConfig);
+        perfGrid = new Grid(perfConfig);
 
         /*
         TESTGRID1
@@ -72,7 +72,7 @@ public class M_GridTest {
         config1.add(12);
         config1.add(8);
         config1.add(5);
-        testGrid1 = new M_Grid(config1);
+        testGrid1 = new Grid(config1);
 
         /*
         TESTGRID2
@@ -85,7 +85,7 @@ public class M_GridTest {
          -------------------
          */
 
-        testGrid2 = new M_Grid(testGrid1);
+        testGrid2 = new Grid(testGrid1);
     }
 
     @Test
@@ -100,11 +100,11 @@ public class M_GridTest {
         assertNotNull(testGrid1.getCaseByKey(12));
         assertTrue(testGrid1.getCaseByKey(12).isMovable(testGrid1));
 
-        case0 = new M_Case(0, 2, 1);
+        case0 = new Case(0, 2, 1);
         assertNotNull(testGrid1.getCaseByKey(0));
         assertTrue(case0.isEqual(testGrid2.getCaseByKey(0)));
 
-        case15 = new M_Case(15, testGrid1.getCaseByKey(15).getPos());
+        case15 = new Case(15, testGrid1.getCaseByKey(15).getPos());
         assertTrue(case15.isEqual(testGrid1.getCaseByKey(15)));
 
         assertNull(testGrid1.getCaseByKey(25));
@@ -113,21 +113,21 @@ public class M_GridTest {
     @Test
     public void getCaseByPos() throws Exception {
 
-        assertNull(testGrid1.getCaseByPos(new M_Position(6, 8)));
+        assertNull(testGrid1.getCaseByPos(new Position(6, 8)));
 
-        assertNotNull(testGrid1.getCaseByPos(new M_Position(1, 0)));
-        assertTrue(testGrid1.getCaseByPos(new M_Position(1, 0)).getKey() == 1);
-        assertNotNull(testGrid1.getCaseByPos(new M_Position(3, 3)));
-        assertTrue(testGrid1.getCaseByPos(new M_Position(3, 3)).isInGrid());
-        assertNotNull(testGrid1.getCaseByPos(new M_Position(3, 1)));
-        assertTrue(testGrid1.getCaseByPos(new M_Position(3, 1)).isMovable(testGrid1));
+        assertNotNull(testGrid1.getCaseByPos(new Position(1, 0)));
+        assertTrue(testGrid1.getCaseByPos(new Position(1, 0)).getKey() == 1);
+        assertNotNull(testGrid1.getCaseByPos(new Position(3, 3)));
+        assertTrue(testGrid1.getCaseByPos(new Position(3, 3)).isInGrid());
+        assertNotNull(testGrid1.getCaseByPos(new Position(3, 1)));
+        assertTrue(testGrid1.getCaseByPos(new Position(3, 1)).isMovable(testGrid1));
 
-        case0 = new M_Case(0, 2, 1);
-        assertNotNull(testGrid1.getCaseByPos(new M_Position(2, 1)));
-        assertTrue(case0.isEqual(testGrid2.getCaseByPos(new M_Position(2, 1))));
+        case0 = new Case(0, 2, 1);
+        assertNotNull(testGrid1.getCaseByPos(new Position(2, 1)));
+        assertTrue(case0.isEqual(testGrid2.getCaseByPos(new Position(2, 1))));
 
-        case15 = new M_Case(15, new M_Position(2, 3));
-        assertTrue(case15.isEqual(testGrid1.getCaseByPos(new M_Position(2, 3))));
+        case15 = new Case(15, new Position(2, 3));
+        assertTrue(case15.isEqual(testGrid1.getCaseByPos(new Position(2, 3))));
 
     }
 
@@ -163,10 +163,10 @@ public class M_GridTest {
          -------------------
          */
 
-        assertTrue(testGrid2.getCaseByKey(0).getPos().isEqual(new M_Position(1, 1)));
-        assertTrue(testGrid2.getCaseByKey(6).getPos().isEqual(new M_Position(2, 1)));
-        assertFalse(testGrid1.getCaseByKey(0).getPos().isEqual(new M_Position(1, 1)));
-        assertFalse(testGrid1.getCaseByKey(6).getPos().isEqual(new M_Position(2, 1)));
+        assertTrue(testGrid2.getCaseByKey(0).getPos().isEqual(new Position(1, 1)));
+        assertTrue(testGrid2.getCaseByKey(6).getPos().isEqual(new Position(2, 1)));
+        assertFalse(testGrid1.getCaseByKey(0).getPos().isEqual(new Position(1, 1)));
+        assertFalse(testGrid1.getCaseByKey(6).getPos().isEqual(new Position(2, 1)));
         assertFalse(testGrid2.isSimilarTo(testGrid1));
 
     }

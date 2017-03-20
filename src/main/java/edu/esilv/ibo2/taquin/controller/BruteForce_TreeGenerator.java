@@ -1,40 +1,40 @@
 package edu.esilv.ibo2.taquin.controller;
 
-import edu.esilv.ibo2.taquin.model.M_Grid;
-import edu.esilv.ibo2.taquin.model.M_PossibNode;
-import edu.esilv.ibo2.taquin.model.M_PossibTree;
+import edu.esilv.ibo2.taquin.model.Grid;
+import edu.esilv.ibo2.taquin.model.Node;
+import edu.esilv.ibo2.taquin.model.Tree;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 
-public class C_BruteForceSolver {
+public class BruteForce_TreeGenerator {
 
     // instanciate possibTree
     // each node will compute his own childs till perfect config
     // add a cpt to nb nodes, nb perfect configs and stop the auto generation when a given cpt is reached
 
-    private M_PossibTree myTree;
-    private LinkedList<M_PossibNode> myQueue;
+    private Tree myTree;
+    private LinkedList<Node> myQueue;
     private int nbConfigs = 0;
     private int nbPerfectConf = 0;
 
-    public C_BruteForceSolver(M_PossibTree myTree) {
+    public BruteForce_TreeGenerator(Tree myTree) {
         this.myTree = myTree;
     }
 
-    public M_PossibTree getMyTree() {
+    public Tree getMyTree() {
         return myTree;
     }
 
-    public void setMyTree(M_PossibTree myTree) {
+    public void setMyTree(Tree myTree) {
         this.myTree = myTree;
     }
 
-    public LinkedList<M_PossibNode> getMyQueue() {
+    public LinkedList<Node> getMyQueue() {
         return myQueue;
     }
 
-    public void setMyQueue(LinkedList<M_PossibNode> myQueue) {
+    public void setMyQueue(LinkedList<Node> myQueue) {
         this.myQueue = myQueue;
     }
 
@@ -47,7 +47,7 @@ public class C_BruteForceSolver {
     }
 
     public void init() {
-        myTree = new M_PossibTree(new M_Grid()); // Random grid configuration
+        myTree = new Tree(new Grid()); // Random grid configuration
     }
 
     public void build1stLvlchilds() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
@@ -55,19 +55,19 @@ public class C_BruteForceSolver {
     }
 
     public void build2ndLvlChilds() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        for (M_PossibNode node : myTree.getRoot().getChildrens()) {
+        for (Node node : myTree.getRoot().getChildrens()) {
             myTree.buildChilds(node);
         }
     }
 
     public void buildChildLvlTillPerfect() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        myQueue = new LinkedList<M_PossibNode>();
+        myQueue = new LinkedList<Node>();
         myQueue.add(myTree.getRoot());
         while (!myQueue.isEmpty()) {
-            M_PossibNode current = myQueue.poll();
+            Node current = myQueue.poll();
             myTree.buildChilds(current);
-            for (M_PossibNode child : current.getChildrens()) {
-                if (!child.gridEquals(C_Party.perfect)) {
+            for (Node child : current.getChildrens()) {
+                if (!child.gridEquals(Party.perfect)) {
                     myQueue.add(child);
                     nbConfigs++;
                 }

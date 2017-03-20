@@ -1,6 +1,6 @@
 package edu.esilv.ibo2.taquin.controller;
 
-import edu.esilv.ibo2.taquin.model.M_Grid;
+import edu.esilv.ibo2.taquin.model.Grid;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,10 +12,10 @@ import static junit.framework.TestCase.assertTrue;
 /**
  * Created by adrianpothuaud on 16/12/2016.
  */
-public class C_PartyTest {
+public class _PartyTest {
 
-    C_Party testParty = new C_Party();
-    M_Grid testGrid1, testGrid2;
+    Party testParty = new Party();
+    Grid testGrid1, testGrid2;
     ArrayList<Integer> config1;
 
     @Before
@@ -38,9 +38,9 @@ public class C_PartyTest {
         config1.add(12);
         config1.add(8);
         config1.add(5);
-        testGrid1 = new M_Grid(config1);
+        testGrid1 = new Grid(config1);
 
-        testGrid2 = new M_Grid(testParty.perfect);
+        testGrid2 = new Grid(testParty.perfect);
 
     }
 

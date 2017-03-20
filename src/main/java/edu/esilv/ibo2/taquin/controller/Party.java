@@ -1,12 +1,12 @@
 package edu.esilv.ibo2.taquin.controller;
 
-import edu.esilv.ibo2.taquin.model.M_Grid;
+import edu.esilv.ibo2.taquin.model.Grid;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class C_Party {
+public class Party {
 
     private static ArrayList<Integer> perfConf = new ArrayList<Integer>() {{
         add(1);
@@ -27,8 +27,8 @@ public class C_Party {
         add(0);
     }};
 
-    static M_Grid perfect = new M_Grid(perfConf);
-    static boolean checkWin(M_Grid grid, M_Grid perfect){
+    static Grid perfect = new Grid(perfConf);
+    static boolean checkWin(Grid grid, Grid perfect){
         return grid.isSimilarTo(perfect);
     }
 
@@ -45,8 +45,8 @@ public class C_Party {
         System.out.println(perfect);
 
         Scanner sc = new Scanner(System.in);
-        // M_Grid g = new M_Grid(); uncomment for classic party
-        M_Grid g = new M_Grid(perfConf); // comment for party
+        // Grid g = new Grid(); uncomment for classic party
+        Grid g = new Grid(perfConf); // comment for party
         g.moveCase(g.getCaseByKey(15));
 
         while(!checkWin(g, perfect)){
@@ -65,7 +65,7 @@ public class C_Party {
                 g.moveCase(g.getCaseByKey(key.get()));
             } else {
                 clearCls();
-                System.out.println("M_Case not movable, please choose another value");
+                System.out.println("Case not movable, please choose another value");
             }
         }
         System.out.println("Congratulations !!! You won this party.");

@@ -6,22 +6,22 @@ package edu.esilv.ibo2.taquin.model;
  *      -*- x (line)
  *      -*- y (column)
  * Constructors:
- *      -*- M_Position()
- *      -*- M_Position(x, y)
+ *      -*- Position()
+ *      -*- Position(x, y)
  * Methods:
  *      -*-
  */
-public class M_Position {
+public class Position {
 
     private int x;
     private int y;
 
-    M_Position(){
+    Position(){
         x=0;
         y=0;
     }
 
-    M_Position(int a, int c) {
+    Position(int a, int c) {
         x=a;
         y=c;
     }
@@ -42,41 +42,41 @@ public class M_Position {
         y=b;
     }
 
-    public M_Position getTop(){
-        //LOGGER.info("call to M_Position.getTop()");
-        return (new M_Position(x-1,y));
+    public Position getTop(){
+        //LOGGER.info("call to Position.getTop()");
+        return (new Position(x-1,y));
     }
 
-    public M_Position getRight(){
-        //LOGGER.info("call to M_Position.getRight()");
-        return (new M_Position(x,y+1));
+    public Position getRight(){
+        //LOGGER.info("call to Position.getRight()");
+        return (new Position(x,y+1));
     }
 
-    public M_Position getBottom(){
-        //LOGGER.info("call to M_Position.getBottom()");
-        return new M_Position(x+1,y);
+    public Position getBottom(){
+        //LOGGER.info("call to Position.getBottom()");
+        return new Position(x+1,y);
     }
 
-    public M_Position getLeft(){
-        //LOGGER.info("call to M_Position.getLeft()");
-        return new M_Position(x,y-1);
+    public Position getLeft(){
+        //LOGGER.info("call to Position.getLeft()");
+        return new Position(x,y-1);
     }
 
     public String toString(){
         return "POSITION: line: " + String.valueOf(x+1) + " colunm: " + String.valueOf(y+1) + "\n";
     }
 
-    void equals(M_Position other){
+    void equals(Position other){
         x=other.getX();
         y=other.getY();
     }
 
-    boolean isEqual(M_Position other){
+    boolean isEqual(Position other){
         return x==other.getX()&&y==other.getY();
     }
 
     public boolean isInGrid(){
-        //LOGGER.info("call to isInGrid method for M_Case " + this);
+        //LOGGER.info("call to isInGrid method for Case " + this);
         return ((x >= 0) && (x < 4) && (y >= 0) && (y < 4));
     }
 

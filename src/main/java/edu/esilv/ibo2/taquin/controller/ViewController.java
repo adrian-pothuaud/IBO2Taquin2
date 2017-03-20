@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
-public class V_Controller {
+public class ViewController {
 
     @FXML
     private Text actiontarget;

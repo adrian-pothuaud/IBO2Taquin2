@@ -7,21 +7,21 @@ import java.util.ArrayList;
 
 import static junit.framework.TestCase.*;
 
-public class M_CaseTest {
+public class _CaseTest {
 
-    private M_Grid testGrid;
-    private M_Case case1;
-    private M_Case case1b;
-    private M_Case case2;
-    private M_Case case3;
-    private M_Case case7;
-    private M_Case case11;
-    private M_Case case0;
-    private M_Case case12;
-    private M_Case case13;
-    private M_Case case15;
-    private M_Case caseNotInGrid;
-    private M_Case caseNotInGrid3;
+    private Grid testGrid;
+    private Case case1;
+    private Case case1b;
+    private Case case2;
+    private Case case3;
+    private Case case7;
+    private Case case11;
+    private Case case0;
+    private Case case12;
+    private Case case13;
+    private Case case15;
+    private Case caseNotInGrid;
+    private Case caseNotInGrid3;
 
     @Before
     public void initTests() throws Exception{
@@ -51,24 +51,24 @@ public class M_CaseTest {
         config1.add(14);
         config1.add(15);
         config1.add(0);
-        testGrid = new M_Grid(config1);
-        case1 = new M_Case(1, 0, 0);
-        case1b = new M_Case(case1);
-        case2 = new M_Case(0, 0, 1);
+        testGrid = new Grid(config1);
+        case1 = new Case(1, 0, 0);
+        case1b = new Case(case1);
+        case2 = new Case(0, 0, 1);
         case2.setKey(2);
-        case3 = new M_Case(3, 0, 2);
-        case7 = new M_Case(7, 1, 2);
-        case0 = new M_Case(0, 3, 3);
-        M_Position pos11 = new M_Position(0, 0);
-        case11 = new M_Case(11, pos11);
+        case3 = new Case(3, 0, 2);
+        case7 = new Case(7, 1, 2);
+        case0 = new Case(0, 3, 3);
+        Position pos11 = new Position(0, 0);
+        case11 = new Case(11, pos11);
         case11.setPos(2, 2);
-        M_Position pos12 = new M_Position(2, 3);
-        case12 = new M_Case(12, new M_Position());
+        Position pos12 = new Position(2, 3);
+        case12 = new Case(12, new Position());
         case12.setPos(pos12);
-        case13 = new M_Case(13, 3, 0);
-        case15 = new M_Case(15, 3, 2);
-        caseNotInGrid = new M_Case(42, 12, 1);
-        caseNotInGrid3 = new M_Case(2, -4, 1);
+        case13 = new Case(13, 3, 0);
+        case15 = new Case(15, 3, 2);
+        caseNotInGrid = new Case(42, 12, 1);
+        caseNotInGrid3 = new Case(2, -4, 1);
     }
 
     @Test
@@ -164,14 +164,14 @@ public class M_CaseTest {
 
     @Test
     public void setKey() throws Exception {
-        M_Case testCase = new M_Case(12, 1, 3);
+        Case testCase = new Case(12, 1, 3);
         testCase.setKey(4);
         assert testCase.getKey() == 4;
     }
 
     @Test
     public void setPos() throws Exception {
-        M_Case testCase = new M_Case(12, 1, 3);
+        Case testCase = new Case(12, 1, 3);
         testCase.setPos(3, 1);
         assert testCase.getPos().getX() == 3;
         assert testCase.getPos().getY() == 1;

@@ -5,15 +5,15 @@ import org.junit.Test;
 
 import java.util.PriorityQueue;
 
-public class M_NodeQueueTest {
+public class _NodeQueueTest {
 
-    private PriorityQueue<M_PossibNode> myQueue;
-    private M_PossibNode node1;
+    private PriorityQueue<Node> myQueue;
+    private Node node1;
 
     @Before
     public void setUp() throws Exception {
-        myQueue = new PriorityQueue<M_PossibNode>();
-        node1 = new M_PossibNode(new M_Grid());
+        myQueue = new PriorityQueue<Node>();
+        node1 = new Node(new Grid());
     }
 
     @Test

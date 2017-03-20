@@ -1,31 +1,31 @@
 package edu.esilv.ibo2.taquin.controller;
 
-import edu.esilv.ibo2.taquin.model.M_Grid;
-import edu.esilv.ibo2.taquin.model.M_PossibNode;
-import edu.esilv.ibo2.taquin.model.M_PossibTree;
+import edu.esilv.ibo2.taquin.model.Grid;
+import edu.esilv.ibo2.taquin.model.Node;
+import edu.esilv.ibo2.taquin.model.Tree;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-public class C_BruteForceNoRepeat {
+public class BruteForceNoRepeat_TreeGenerator {
 
-    private M_PossibTree myTree;
-    private ArrayList<M_PossibNode> computed;
-    private M_Grid perfect = C_Party.perfect;
+    private Tree myTree;
+    private ArrayList<Node> computed;
+    private Grid perfect = Party.perfect;
     private int cptPerfect;
 
     public void C_BruteForceNoRepeat() {
         System.out.println("Building Tree for BruteForceNoRepeat solver");
-        M_Grid g = new M_Grid();
-        while (g.isSimilarTo(perfect)) g = new M_Grid();
-        myTree = new M_PossibTree(g);
-        computed = new ArrayList<M_PossibNode>();
+        Grid g = new Grid();
+        while (g.isSimilarTo(perfect)) g = new Grid();
+        myTree = new Tree(g);
+        computed = new ArrayList<Node>();
     }
 
     public void buildL1() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         // build root childs
         myTree.buildChilds(myTree.getRoot());
-        for (M_PossibNode child : myTree.getRoot().getChildrens()) {
+        for (Node child : myTree.getRoot().getChildrens()) {
             if (!child.gridEquals(perfect) && !computed.contains(child)) {
                 computed.add(computed.size() - 1 , child);
             }

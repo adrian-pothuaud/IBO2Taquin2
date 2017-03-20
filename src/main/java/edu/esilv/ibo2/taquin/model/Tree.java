@@ -8,19 +8,19 @@ import java.util.ArrayList;
  * A class used for Puzzle solving algorithms.
  * Stores an initial configuration as root node and a list of childrens(inner class M_PossibNode).
  */
-public class M_PossibTree{
+public class Tree {
 
-    private M_PossibNode root;
+    private Node root;
 
-    public M_PossibTree(M_Grid r) {
-        root = new M_PossibNode(r);
+    public Tree(Grid r) {
+        root = new Node(r);
     }
 
-    public M_PossibNode getRoot() {
+    public Node getRoot() {
         return root;
     }
 
-    public int buildChilds(M_PossibNode leaf) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public int buildChilds(Node leaf) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
 
         int cpt = 0;
 
@@ -32,10 +32,10 @@ public class M_PossibTree{
         }};
 
         for (String direction : directions) {
-            Method getDir = Class.forName("edu.esilv.ibo2.taquin.model.M_Position").getDeclaredMethod(direction);
-            M_Position pos = (M_Position) getDir.invoke(leaf.getGrid().getCaseByKey(0).getPos());
+            Method getDir = Class.forName("edu.esilv.ibo2.taquin.model.Position").getDeclaredMethod(direction);
+            Position pos = (Position) getDir.invoke(leaf.getGrid().getCaseByKey(0).getPos());
             if (pos.isInGrid()) {
-                M_Grid newGrid = new M_Grid(leaf.getGrid());
+                Grid newGrid = new Grid(leaf.getGrid());
                 newGrid.moveCase(newGrid.getCaseByPos(pos));
                 leaf.addChild(newGrid);
                 cpt ++;
@@ -45,7 +45,7 @@ public class M_PossibTree{
         return cpt;
     }
 
-    public int buildChildsImproved(M_PossibNode leaf) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public int buildChildsImproved(Node leaf) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
 
         int cpt = 0;
 
@@ -57,10 +57,10 @@ public class M_PossibTree{
         }};
 
         for (String direction : directions) {
-            Method getDir = Class.forName("edu.esilv.ibo2.taquin.model.M_Position").getDeclaredMethod(direction);
-            M_Position pos = (M_Position) getDir.invoke(leaf.getGrid().getCaseByKey(0).getPos());
+            Method getDir = Class.forName("edu.esilv.ibo2.taquin.model.Position").getDeclaredMethod(direction);
+            Position pos = (Position) getDir.invoke(leaf.getGrid().getCaseByKey(0).getPos());
             if (pos.isInGrid()) {
-                M_Grid newGrid = new M_Grid(leaf.getGrid());
+                Grid newGrid = new Grid(leaf.getGrid());
                 newGrid.moveCase(newGrid.getCaseByPos(pos));
                 leaf.addChild(newGrid);
                 cpt ++;
@@ -70,22 +70,22 @@ public class M_PossibTree{
         return cpt;
     }
 
-    public void printTree(M_PossibNode node) {
+    public void printTree(Node node) {
         if (node == null) {
             return;
         }
         System.out.println(node.getGrid());
-        for(M_PossibNode child : node.childrens) {
+        for(Node child : node.childrens) {
             printTree(child);
         }
     }
 
-    public void printLeafs(M_PossibNode node) {
+    public void printLeafs(Node node) {
         if (!node.haveChild()) {
             System.out.println(node.getGrid());
             return;
         }
-        for (M_PossibNode child : node.childrens) {
+        for (Node child : node.childrens) {
             printLeafs(child);
         }
     }

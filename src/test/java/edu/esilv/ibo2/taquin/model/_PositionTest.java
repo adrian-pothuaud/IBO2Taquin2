@@ -6,9 +6,9 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
-public class M_PositionTest {
+public class _PositionTest {
 
-    private M_Position pos1, pos2, pos1b, pos2b, pos3, posBis, posTer;
+    private Position pos1, pos2, pos1b, pos2b, pos3, posBis, posTer;
 
     @Before
     public void setUp() throws Exception {
@@ -21,13 +21,13 @@ posBis  | pos2  |        |  pos3  |
          -------------------------
 
          */
-        pos1 = new M_Position(0, 1);
-        pos1b = new M_Position(0, 1);
-        pos2 = new M_Position(1, 0);
-        pos2b = new M_Position(1, 0);
-        pos3 = new M_Position(1, 2);
-        posBis = new M_Position(1, -1);
-        posTer = new M_Position(-1, 2);
+        pos1 = new Position(0, 1);
+        pos1b = new Position(0, 1);
+        pos2 = new Position(1, 0);
+        pos2b = new Position(1, 0);
+        pos3 = new Position(1, 2);
+        posBis = new Position(1, -1);
+        posTer = new Position(-1, 2);
     }
 
     @Test

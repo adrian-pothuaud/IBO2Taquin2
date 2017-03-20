@@ -5,12 +5,12 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class M_PossibNodeTest {
+public class _NodeTest {
 
-    private M_Grid g1;
-    private M_Grid g2;
-    private M_Grid g3;
-    private M_PossibTree myTree;
+    private Grid g1;
+    private Grid g2;
+    private Grid g3;
+    private Tree myTree;
 
     @Before
     public void setUp() throws Exception {
@@ -19,17 +19,17 @@ public class M_PossibNodeTest {
         ---- c1 ---- c2 ---- c3 ----
         - c12 ---------- c31 - c32 -
          */
-        M_Grid g = new M_Grid();
-        g1 = new M_Grid(g);
-        g2 = new M_Grid(g);
-        g3 = new M_Grid(g);
-        myTree = new M_PossibTree(g);
+        Grid g = new Grid();
+        g1 = new Grid(g);
+        g2 = new Grid(g);
+        g3 = new Grid(g);
+        myTree = new Tree(g);
     }
 
     @Test
     public void addChildV1() throws Exception {
         assert myTree.getRoot().childrens.isEmpty();
-        myTree.getRoot().childrens.add(new M_PossibNode(g1));
+        myTree.getRoot().childrens.add(new Node(g1));
         assert !myTree.getRoot().childrens.isEmpty();
         assert myTree.getRoot().childrens.size() == 1;
         assert myTree.getRoot().childrens.get(0).data.equals(g1);
@@ -46,14 +46,14 @@ public class M_PossibNodeTest {
 
     @Test
     public void NodesInArrayList() throws Exception {
-        g1 = new M_Grid();
-        g2 = new M_Grid();
-        g3 = new M_Grid();
-        ArrayList<M_PossibNode> myList = new ArrayList<M_PossibNode>();
-        myList.add(new M_PossibNode(g1));
+        g1 = new Grid();
+        g2 = new Grid();
+        g3 = new Grid();
+        ArrayList<Node> myList = new ArrayList<Node>();
+        myList.add(new Node(g1));
         assert !myList.isEmpty();
-        myList.add(new M_PossibNode(g2));
-        myList.add(new M_PossibNode(g3));
+        myList.add(new Node(g2));
+        myList.add(new Node(g3));
         assert myList.size() == 3;
         assert myList.get(1).data.equals(g2);
         myList.remove(myList.get(1));
@@ -64,11 +64,11 @@ public class M_PossibNodeTest {
     @Test
     public void add2ChildsV1() throws Exception {
         assert myTree.getRoot().childrens.isEmpty();
-        myTree.getRoot().childrens.add(new M_PossibNode(g1));
+        myTree.getRoot().childrens.add(new Node(g1));
         assert !myTree.getRoot().childrens.isEmpty();
         assert myTree.getRoot().childrens.size() == 1;
         assert myTree.getRoot().childrens.get(0).data.equals(g1);
-        myTree.getRoot().childrens.add(new M_PossibNode(g2));
+        myTree.getRoot().childrens.add(new Node(g2));
         assert myTree.getRoot().childrens.size() == 2;
         assert myTree.getRoot().childrens.get(1).data.equals(g2);
     }

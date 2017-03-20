@@ -1,7 +1,7 @@
 package edu.esilv.ibo2.taquin.view;
 
-import edu.esilv.ibo2.taquin.model.M_Case;
-import edu.esilv.ibo2.taquin.model.M_Grid;
+import edu.esilv.ibo2.taquin.model.Case;
+import edu.esilv.ibo2.taquin.model.Grid;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,15 +13,15 @@ import java.util.List;
 /**
  * Created by APD2 on 3/13/2017.
  */
-public class FenetreAttacheeAGrid extends JFrame {
+public class MainWindow extends JFrame {
 
 
     public static void main(String[] args){
-        M_Grid grid = new M_Grid(); // random grid
-        new FenetreAttacheeAGrid(grid);
+        Grid grid = new Grid(); // random grid
+        new MainWindow(grid);
     }
 
-    public FenetreAttacheeAGrid(final M_Grid g){
+    public MainWindow(final Grid g){
         this.setTitle("Projet Taquin");
         this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,9 +31,9 @@ public class FenetreAttacheeAGrid extends JFrame {
         this.setLayout(new GridLayout(4, 4));
 
         // On crée des boutons avec les Case de la Grid
-        List<ArrayList<M_Case>> cases = (List<ArrayList<M_Case>>) g.getCases();
-        for (ArrayList<M_Case> row : cases) {
-            for (final M_Case curCase : row) {
+        List<ArrayList<Case>> cases = (List<ArrayList<Case>>) g.getCases();
+        for (ArrayList<Case> row : cases) {
+            for (final Case curCase : row) {
                 final JButton newBtn = new JButton(String.valueOf(curCase.getKey()));
                 // on ajoute le btn à la grille graphique
                 this.getContentPane().add(newBtn);
@@ -56,7 +56,7 @@ public class FenetreAttacheeAGrid extends JFrame {
                             System.out.println("Grid after move case \n " + g);
                             System.out.println("--------");
 
-                            new FenetreAttacheeAGrid(g);
+                            new MainWindow(g);
 
                             try {
                                 this.finalize();
