@@ -42,22 +42,22 @@ public class M_Position {
         y=b;
     }
 
-    M_Position getTop(){
+    public M_Position getTop(){
         //LOGGER.info("call to M_Position.getTop()");
         return (new M_Position(x-1,y));
     }
 
-    M_Position getRight(){
+    public M_Position getRight(){
         //LOGGER.info("call to M_Position.getRight()");
         return (new M_Position(x,y+1));
     }
 
-    M_Position getBottom(){
+    public M_Position getBottom(){
         //LOGGER.info("call to M_Position.getBottom()");
         return new M_Position(x+1,y);
     }
 
-    M_Position getLeft(){
+    public M_Position getLeft(){
         //LOGGER.info("call to M_Position.getLeft()");
         return new M_Position(x,y-1);
     }
@@ -75,7 +75,7 @@ public class M_Position {
         return x==other.getX()&&y==other.getY();
     }
 
-    boolean isInGrid(){
+    public boolean isInGrid(){
         //LOGGER.info("call to isInGrid method for M_Case " + this);
         return ((x >= 0) && (x < 4) && (y >= 0) && (y < 4));
     }

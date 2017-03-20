@@ -85,7 +85,7 @@ public class M_Grid {
         return null;
     }
 
-    M_Case getCaseByPos(M_Position k){
+    public M_Case getCaseByPos(M_Position k){
         try{
             return grid.get(k.getX()).get(k.getY());
         }catch (IndexOutOfBoundsException e){
@@ -148,5 +148,15 @@ public class M_Grid {
         return grid;
     }
 
-
+    public int computeNOptFactor() {
+        int factor = 0;
+        for (ArrayList<M_Case> row : grid) {
+            for (M_Case c : row) {
+                if(c.getKey() == ((4 * c.getPos().getX()) + c.getPos().getY() + 1)) {
+                    factor++;
+                }
+            }
+        }
+        return factor;
+    }
 }

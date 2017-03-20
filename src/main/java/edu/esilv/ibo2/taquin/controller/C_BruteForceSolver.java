@@ -16,6 +16,35 @@ public class C_BruteForceSolver {
     private M_PossibTree myTree;
     private LinkedList<M_PossibNode> myQueue;
     private int nbConfigs = 0;
+    private int nbPerfectConf = 0;
+
+    public C_BruteForceSolver(M_PossibTree myTree) {
+        this.myTree = myTree;
+    }
+
+    public M_PossibTree getMyTree() {
+        return myTree;
+    }
+
+    public void setMyTree(M_PossibTree myTree) {
+        this.myTree = myTree;
+    }
+
+    public LinkedList<M_PossibNode> getMyQueue() {
+        return myQueue;
+    }
+
+    public void setMyQueue(LinkedList<M_PossibNode> myQueue) {
+        this.myQueue = myQueue;
+    }
+
+    public int getNbConfigs() {
+        return nbConfigs;
+    }
+
+    public void setNbConfigs(int nbConfigs) {
+        this.nbConfigs = nbConfigs;
+    }
 
     public void init() {
         myTree = new M_PossibTree(new M_Grid()); // Random grid configuration
@@ -42,7 +71,11 @@ public class C_BruteForceSolver {
                     myQueue.add(child);
                     nbConfigs++;
                 }
+                else{
+                    nbPerfectConf++;
+                }
                 System.out.println("Nb configurations computed : " + String.valueOf(nbConfigs));
+                System.out.println("Nb perfect configurations computed : " + String.valueOf(nbPerfectConf));
             }
         }
     }

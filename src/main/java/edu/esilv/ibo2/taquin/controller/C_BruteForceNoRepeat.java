@@ -26,10 +26,15 @@ public class C_BruteForceNoRepeat {
         // build root childs
         myTree.buildChilds(myTree.getRoot());
         for (M_PossibNode child : myTree.getRoot().getChildrens()) {
-            if (!child.gridEquals(perfect)) {
+            if (!child.gridEquals(perfect) && !computed.contains(child)) {
                 computed.add(computed.size() - 1 , child);
+            }
+            if (computed.contains(child)) {
+                myTree.getRoot().getChildrens().remove(child);
             }
         }
     }
+
+
 
 }

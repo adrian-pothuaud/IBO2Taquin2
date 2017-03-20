@@ -2,13 +2,12 @@ package edu.esilv.ibo2.taquin.view;
 
 import edu.esilv.ibo2.taquin.model.M_Case;
 import edu.esilv.ibo2.taquin.model.M_Grid;
-import edu.esilv.ibo2.taquin.model.M_Position;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,7 +57,12 @@ public class FenetreAttacheeAGrid extends JFrame {
                             System.out.println("--------");
 
                             new FenetreAttacheeAGrid(g);
-                            //this.setLayout(new GridLayout(4, 4));
+
+                            try {
+                                this.finalize();
+                            } catch (Throwable throwable) {
+                                throwable.printStackTrace();
+                            }
 
 
                         }
