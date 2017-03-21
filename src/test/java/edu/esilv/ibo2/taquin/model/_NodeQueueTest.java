@@ -22,11 +22,14 @@ public class _NodeQueueTest {
         myQueue.add(node1);
         assert !myQueue.isEmpty();
         assert myQueue.size() == 1;
+        myQueue.add(new Node(new Grid()));
     }
 
     @Test
     public void nodeQueuePoll() {
         myQueue.add(node1);
+        Node node2 = new Node(new Grid());
+        myQueue.add(node2);
         assert myQueue.poll().equals(node1);
         assert myQueue.isEmpty();
     }

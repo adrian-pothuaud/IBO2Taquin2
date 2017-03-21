@@ -149,11 +149,12 @@ public class Grid {
 
     public int computeNOptFactor() {
         int factor = 0;
-        for (ArrayList<Case> row : grid) {
-            for (Case c : row) {
-                if(c.getKey() == ((4 * c.getPos().getX()) + c.getPos().getY() + 1)) {
-                    factor++;
-                }
+        for (int value = 1; value <= 15; value++) {
+            if(getCaseByKey(value).getKey() == ((4 * getCaseByKey(value).getPos().getX()) + getCaseByKey(value).getPos().getY() + 1)) {
+                factor++;
+            }
+            else{
+                break;
             }
         }
         return factor;

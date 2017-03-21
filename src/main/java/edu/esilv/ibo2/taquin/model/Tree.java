@@ -90,7 +90,27 @@ public class Tree {
         }
     }
 
-    public void readAndExec(String parentClass, String method, ArrayList args) {
+    public int maxDepth(Node node){
+        if(!node.haveChild()){
+            return 0;
+        }
+        else {
+            // compute the depth of each sub tree
+            ArrayList<Integer> depths = new ArrayList<Integer>();
+            for (Node child : node.getChildrens()) {
+                depths.add(maxDepth(child));
+            }
+            return (LIST_MAX(depths) + 1);
+        }
+    }
 
+    private int LIST_MAX(ArrayList<Integer> depths) {
+        int max = depths.get(0);
+        for (Integer i : depths) {
+            if (i > max) {
+                max = i;
+            }
+        }
+        return max;
     }
 }

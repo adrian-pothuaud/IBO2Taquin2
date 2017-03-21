@@ -7,9 +7,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-/**
- * Created by adrianpothuaud on 14/12/2016.
- */
 public class N_Opt_TreeGenerator {
 
     // give attributes to the grids to determine their "velocity" for being solved
@@ -41,16 +38,21 @@ public class N_Opt_TreeGenerator {
     }
 
     public void letOnlyBestGrids(Node parent) {
+        System.out.println("NBChilds : " + String.valueOf(parent.getChildrens().size()));
         int highestFactor = getHighestFactor(parent.getChildrens());
+        System.out.println("Current highest factor in childs is : " + String.valueOf(highestFactor));
         ArrayList<Node> childsToRemove = new ArrayList<Node>();
         for (Node child : parent.getChildrens()) {
             if (child.getGrid().computeNOptFactor() < highestFactor) {
+                System.out.println("1 child to be removed");
                 childsToRemove.add(child);
             }
         }
         for (Node childToRemove : childsToRemove) {
+            System.out.println("Removing 1 child");
             parent.getChildrens().remove(childToRemove);
         }
+        System.out.println("NBChilds : " + String.valueOf(parent.getChildrens().size()));
     }
 
     private int getHighestFactor(ArrayList<Node> childs) {
@@ -64,33 +66,52 @@ public class N_Opt_TreeGenerator {
         return factor;
     }
 
-    public void buildChildLvlTillPerfect() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        myQueue.add(myTree.getRoot());
+    public void lvlOrderBuildTillPerfect() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
+        myQueue.addLast(myTree.getRoot());
+        System.out.println("Adding root to queue");
+
         int actualPerfConf = getNbPerfectConf();
-        while (!myQueue.isEmpty() || getNbPerfectConf() <= actualPerfConf) {
+        System.out.println("Initialy " + String.valueOf(actualPerfConf) + " perfect configs");
+
+        while (!myQueue.isEmpty()) {
+            System.out.println("Queue not empty");
+
             Node current = myQueue.poll();
-            myTree.buildChilds(current);
-            for (Node child : current.getChildrens()) {
-                if (!child.gridEquals(Party.perfect)) {
-                    myQueue.add(child);
-                    nbConfigs++;
-                }
-                else{
-                    nbPerfectConf++;
-                    break;
-                }
-                System.out.println("Nb configurations computed : " + String.valueOf(nbConfigs));
-                System.out.println("Nb perfect configurations computed : " + String.valueOf(nbPerfectConf));
+            System.out.println("Looking at node : ");
+            System.out.println(current.getGrid());
+
+            if (current.getGrid().computeNOptFactor() == 15) {
+                System.out.println("PERFECT FOUND, LEAVING ALGORITHM RIGHT NOW");
+                break;
             }
+
+            System.out.println("Building all current's node childs");
+            myTree.buildChilds(current);
+
+            System.out.println("Cleaning current node's childs");
+            letOnlyBestGrids(current);
+
+            System.out.println("Adding remaining childs to queue");
+            addRemainingChildsToQueue(current);
+
+            System.out.println(myQueue);
+            System.out.println("Now " + String.valueOf(actualPerfConf) + " perfect configs");
         }
     }
 
-    public void buildChildLvlTillPerfect(int cptLimiter) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    private void addRemainingChildsToQueue(Node current) {
+        for (Node remainingChild : current.getChildrens()) {
+            myQueue.add(remainingChild);
+        }
+    }
+
+    public void buildWithPerfConfLimiter(int cptLimiter) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         int previousNbPerf = getNbPerfectConf();
         if (cptLimiter == 0) {
             return;
         }
-        buildChildLvlTillPerfect();
-        buildChildLvlTillPerfect(cptLimiter - (getNbPerfectConf() - previousNbPerf));
+        lvlOrderBuildTillPerfect();
+        buildWithPerfConfLimiter(cptLimiter - (getNbPerfectConf() - previousNbPerf));
     }
 }

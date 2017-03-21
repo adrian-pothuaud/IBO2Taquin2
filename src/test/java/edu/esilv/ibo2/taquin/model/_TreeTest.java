@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public class TreeTest {
+public class _TreeTest {
 
     @Test
     public void basicTree() throws Exception {
