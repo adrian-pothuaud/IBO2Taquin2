@@ -32,7 +32,7 @@ public class Node {
 
     public void addChild(Grid g, String direction){
         Node newChild = new Node(g);
-        newChild.setDirectionsFromRoot(this.directionsFromRoot);
+        newChild.setDirectionsFromRoot(new ArrayList<String>(this.directionsFromRoot));
         newChild.addDirectionFromParent(direction);
         childrens.add(newChild);
     }
