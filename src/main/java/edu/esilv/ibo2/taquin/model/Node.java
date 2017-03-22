@@ -6,6 +6,19 @@ public class Node {
 
     Grid data;
     ArrayList<Node> childrens;
+    ArrayList<String> directionsFromRoot;
+
+    public void addDirectionFromParent(String direction) {
+        this.directionsFromRoot.add(direction);
+    }
+
+    public ArrayList<String> getDirectionsFromRoot() {
+        return directionsFromRoot;
+    }
+
+    public void setDirectionsFromRoot(ArrayList<String> directionsFromRoot) {
+        this.directionsFromRoot = directionsFromRoot;
+    }
 
     public Node(Grid g){
         childrens = new ArrayList<Node>();
@@ -13,7 +26,15 @@ public class Node {
     }
 
     public void addChild(Grid g){
-        childrens.add(new Node(g));
+        Node newChild = new Node(g);
+        childrens.add(newChild);
+    }
+
+    public void addChild(Grid g, String direction){
+        Node newChild = new Node(g);
+        newChild.setDirectionsFromRoot(this.directionsFromRoot);
+        newChild.addDirectionFromParent(direction);
+        childrens.add(newChild);
     }
 
     public boolean haveChild() {

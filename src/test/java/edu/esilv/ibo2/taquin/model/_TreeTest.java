@@ -143,7 +143,7 @@ public class _TreeTest {
             if (pos.isInGrid()) {
                 Grid newGrid = new Grid(myTree.getRoot().getGrid());
                 newGrid.moveCase(newGrid.getCaseByPos(pos));
-                myTree.getRoot().addChild(newGrid);
+                myTree.getRoot().addChild(newGrid, direction);
             }
         }
 
@@ -182,7 +182,7 @@ public class _TreeTest {
             }
         }
 
-        myTree.printTree(myTree.getRoot());
+        //myTree.printTree(myTree.getRoot());
     }
 
     @Test

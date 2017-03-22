@@ -1,5 +1,6 @@
 package edu.esilv.ibo2.taquin.view;
 
+import edu.esilv.ibo2.taquin.controller.SolvableGrid;
 import edu.esilv.ibo2.taquin.model.Case;
 import edu.esilv.ibo2.taquin.model.Grid;
 
@@ -7,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +18,10 @@ import java.util.List;
 public class MainWindow extends JFrame {
 
 
-    public static void main(String[] args){
-        Grid grid = new Grid(); // random grid
-        new MainWindow(grid);
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        // Grid grid = new Grid(); // random grid
+        Grid solvableGrid = new SolvableGrid().genSolvablegrid(5);
+        new MainWindow(solvableGrid);
     }
 
     public MainWindow(final Grid g){

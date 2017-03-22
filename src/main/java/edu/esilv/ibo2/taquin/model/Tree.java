@@ -14,6 +14,7 @@ public class Tree {
 
     public Tree(Grid r) {
         root = new Node(r);
+        root.setDirectionsFromRoot(new ArrayList<String>());
     }
 
     public Node getRoot() {
@@ -37,7 +38,7 @@ public class Tree {
             if (pos.isInGrid()) {
                 Grid newGrid = new Grid(leaf.getGrid());
                 newGrid.moveCase(newGrid.getCaseByPos(pos));
-                leaf.addChild(newGrid);
+                leaf.addChild(newGrid, direction);
                 cpt ++;
             }
         }
@@ -62,7 +63,7 @@ public class Tree {
             if (pos.isInGrid()) {
                 Grid newGrid = new Grid(leaf.getGrid());
                 newGrid.moveCase(newGrid.getCaseByPos(pos));
-                leaf.addChild(newGrid);
+                leaf.addChild(newGrid, direction);
                 cpt ++;
             }
         }
@@ -70,13 +71,9 @@ public class Tree {
         return cpt;
     }
 
-    public void printTree(Node node) {
-        if (node == null) {
-            return;
-        }
-        System.out.println(node.getGrid());
-        for(Node child : node.childrens) {
-            printTree(child);
+    public void printTree(int levels) {
+        for (int l = 0; l < levels; l++) {
+
         }
     }
 

@@ -38,21 +38,21 @@ public class N_Opt_TreeGenerator {
     }
 
     public void letOnlyBestGrids(Node parent) {
-        System.out.println("NBChilds : " + String.valueOf(parent.getChildrens().size()));
+        //System.out.println("NBChilds : " + String.valueOf(parent.getChildrens().size()));
         int highestFactor = getHighestFactor(parent.getChildrens());
-        System.out.println("Current highest factor in childs is : " + String.valueOf(highestFactor));
+        //System.out.println("Current highest factor in childs is : " + String.valueOf(highestFactor));
         ArrayList<Node> childsToRemove = new ArrayList<Node>();
         for (Node child : parent.getChildrens()) {
             if (child.getGrid().computeNOptFactor() < highestFactor) {
-                System.out.println("1 child to be removed");
+                //System.out.println("1 child to be removed");
                 childsToRemove.add(child);
             }
         }
         for (Node childToRemove : childsToRemove) {
-            System.out.println("Removing 1 child");
+            //System.out.println("Removing 1 child");
             parent.getChildrens().remove(childToRemove);
         }
-        System.out.println("NBChilds : " + String.valueOf(parent.getChildrens().size()));
+        //System.out.println("NBChilds : " + String.valueOf(parent.getChildrens().size()));
     }
 
     private int getHighestFactor(ArrayList<Node> childs) {
@@ -66,13 +66,49 @@ public class N_Opt_TreeGenerator {
         return factor;
     }
 
-    public void lvlOrderBuildTillPerfect() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public ArrayList<String> lvlOrderBuildTillPerfect() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
+        // previously init Tree with the required grid
         myQueue.addLast(myTree.getRoot());
-        System.out.println("Adding root to queue");
+        //System.out.println("Adding root to queue");
 
         int actualPerfConf = getNbPerfectConf();
-        System.out.println("Initialy " + String.valueOf(actualPerfConf) + " perfect configs");
+        //System.out.println("Initialy " + String.valueOf(actualPerfConf) + " perfect configs");
+
+        while (!myQueue.isEmpty()) {
+            //System.out.println("Queue not empty");
+
+            Node current = myQueue.poll();
+            //System.out.println("Looking at node : ");
+            System.out.println("\n\n\n\n\n\n\n\n\n" + current.getGrid().toString());
+
+            if (current.getGrid().computeNOptFactor() == 15) {
+                //System.out.println("PERFECT FOUND, LEAVING ALGORITHM RIGHT NOW");
+                return current.getDirectionsFromRoot();
+            }
+
+            //System.out.println("Building all current's node childs");
+            myTree.buildChilds(current);
+
+            //System.out.println("Cleaning current node's childs");
+            letOnlyBestGrids(current);
+
+            //System.out.println("Adding remaining childs to queue");
+            addRemainingChildsToQueue(current);
+
+            //System.out.println(myQueue);
+            //System.out.println("Now " + String.valueOf(actualPerfConf) + " perfect configs");
+        }
+        return null;
+    }
+
+    private void addRemainingChildsToQueue(Node current) {
+        for (Node remainingChild : current.getChildrens()) {
+            myQueue.add(remainingChild);
+        }
+    }
+
+    public void lvlOrderBuild(Node node) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
         while (!myQueue.isEmpty()) {
             System.out.println("Queue not empty");
@@ -83,35 +119,20 @@ public class N_Opt_TreeGenerator {
 
             if (current.getGrid().computeNOptFactor() == 15) {
                 System.out.println("PERFECT FOUND, LEAVING ALGORITHM RIGHT NOW");
-                break;
+                nbPerfectConf ++;
+                if (getNbPerfectConf() >= 2) {break;}
+                continue;
             }
 
-            System.out.println("Building all current's node childs");
             myTree.buildChilds(current);
 
-            System.out.println("Cleaning current node's childs");
-            letOnlyBestGrids(current);
+            // letOnlyBestGrids(current);
 
-            System.out.println("Adding remaining childs to queue");
             addRemainingChildsToQueue(current);
 
             System.out.println(myQueue);
-            System.out.println("Now " + String.valueOf(actualPerfConf) + " perfect configs");
+            System.out.println("Now " + String.valueOf(getNbConfigs()) + " configs and " + String.valueOf(getNbPerfectConf()) + " perfect grid(s)");
         }
     }
 
-    private void addRemainingChildsToQueue(Node current) {
-        for (Node remainingChild : current.getChildrens()) {
-            myQueue.add(remainingChild);
-        }
-    }
-
-    public void buildWithPerfConfLimiter(int cptLimiter) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        int previousNbPerf = getNbPerfectConf();
-        if (cptLimiter == 0) {
-            return;
-        }
-        lvlOrderBuildTillPerfect();
-        buildWithPerfConfLimiter(cptLimiter - (getNbPerfectConf() - previousNbPerf));
-    }
 }

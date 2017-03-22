@@ -8,12 +8,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Random;
 
-class SolvableGrid {
+public class SolvableGrid {
 
     private Grid g = new Grid(Party.perfect);
     private ArrayList<Integer> lastMoves = new ArrayList<Integer>();
 
-    SolvableGrid() {
+    public SolvableGrid() {
         g = new Grid(Party.perfect); // perfect grid
     }
 
@@ -57,7 +57,7 @@ class SolvableGrid {
         }
     }
 
-    Grid genSolvablegrid(int iterations) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    public Grid genSolvablegrid(int iterations) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         for (int i = 0; i < iterations; i++) {
             randomMoveZero();
         }
