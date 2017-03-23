@@ -23,7 +23,7 @@ public class MainWindow extends JFrame {
 
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         // Grid grid = new Grid(); // random grid
-        Grid solvableGrid = new SolvableGrid().genSolvablegrid(5);
+        Grid solvableGrid = new SolvableGrid().genSolvablegrid(20);
         new MainWindow(solvableGrid);
     }
 
@@ -85,33 +85,41 @@ public class MainWindow extends JFrame {
                     myDirections = myGenerator.lvlOrderBuildTillPerfect();
                     System.out.println(myDirections);
                     ArrayList<Grid> gridToPerfect = new ArrayList<Grid>();
-                    Case currentTarget = null;
+                    // Case currentTarget = null;
                     for (String direction : myDirections) {
                         // on récupère la case en fonction de la direction donnée
                         if(direction.equals("getLeft")) {
                             // on récupère la case à gauche de 0
-                            currentTarget = g.getCaseByPos(g.getCaseByKey(0).getPos().getLeft());
+                            Case currentTarget = g.getCaseByPos(g.getCaseByKey(0).getPos().getLeft());
+                            Grid newGrid = new Grid(g);
+                            newGrid.moveCase(currentTarget);
+                            gridToPerfect.add(newGrid);
                         }
                         else if (direction.equals("getTop")) {
-                            currentTarget = g.getCaseByPos(g.getCaseByKey(0).getPos().getTop());
+                            Case currentTarget = g.getCaseByPos(g.getCaseByKey(0).getPos().getTop());
+                            Grid newGrid = new Grid(g);
+                            newGrid.moveCase(currentTarget);
+                            gridToPerfect.add(newGrid);
                         }
                         else if(direction.equals("getRight")) {
-                            currentTarget = g.getCaseByPos(g.getCaseByKey(0).getPos().getRight());
+                            Case currentTarget = g.getCaseByPos(g.getCaseByKey(0).getPos().getRight());
+                            Grid newGrid = new Grid(g);
+                            newGrid.moveCase(currentTarget);
+                            gridToPerfect.add(newGrid);
                         }
                         else {
-                            currentTarget = g.getCaseByPos(g.getCaseByKey(0).getPos().getBottom());
+                            Case currentTarget = g.getCaseByPos(g.getCaseByKey(0).getPos().getBottom());
+                            Grid newGrid = new Grid(g);
+                            newGrid.moveCase(currentTarget);
+                            gridToPerfect.add(newGrid);
                         }
-                        Grid newGrid = new Grid(g);
-                        newGrid.moveCase(currentTarget);
-                        gridToPerfect.add(newGrid);
-
 
                     }
                     // on a une liste de grid à afficher
                     //gridToPerfect.
                     System.out.println("size = "+ gridToPerfect.size());
 
-                    for (int i=0; i<=gridToPerfect.size();i++){
+                    for (int i=0; i<gridToPerfect.size();i++){
                         System.out.println(gridToPerfect.get(i));
                     }
                     //new MainWindow(newGrid);

@@ -12,6 +12,8 @@ public class Tree {
 
     private Node root;
 
+    int nbNodes = 1;
+
     public Tree(Grid r) {
         root = new Node(r);
         root.setDirectionsFromRoot(new ArrayList<String>());
@@ -39,6 +41,7 @@ public class Tree {
                 Grid newGrid = new Grid(leaf.getGrid());
                 newGrid.moveCase(newGrid.getCaseByPos(pos));
                 leaf.addChild(newGrid, direction);
+                nbNodes ++;
                 cpt ++;
             }
         }
@@ -109,5 +112,9 @@ public class Tree {
             }
         }
         return max;
+    }
+
+    public int getNbNodes() {
+        return nbNodes;
     }
 }

@@ -80,7 +80,7 @@ public class N_Opt_TreeGenerator {
 
             Node current = myQueue.poll();
             //System.out.println("Looking at node : ");
-            System.out.println("\n\n\n\n\n\n\n\n\n" + current.getGrid().toString());
+            //System.out.println("\n\n\n\n\n\n\n\n\n" + current.getGrid().toString());
 
             if (current.getGrid().computeNOptFactor() == 15) {
                 //System.out.println("PERFECT FOUND, LEAVING ALGORITHM RIGHT NOW");
