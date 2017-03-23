@@ -27,7 +27,7 @@ public class Party {
         add(0);
     }};
 
-    static Grid perfect = new Grid(perfConf);
+    public static Grid perfect = new Grid(perfConf);
     static boolean checkWin(Grid grid, Grid perfect){
         return grid.isSimilarTo(perfect);
     }

@@ -2,7 +2,9 @@ package edu.esilv.ibo2.taquin.controller;
 
 import com.oracle.tools.packager.Log;
 import edu.esilv.ibo2.taquin.model.Grid;
+import edu.esilv.ibo2.taquin.model.Node;
 import edu.esilv.ibo2.taquin.model.Position;
+import edu.esilv.ibo2.taquin.model.Tree;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -63,5 +65,8 @@ public class SolvableGrid {
         }
         return g;
     }
+
+
+
 
 }
